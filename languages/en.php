@@ -22,18 +22,6 @@ $english = array(
 	'site_announcement:action:edit:error:time' => "The enddate can't be before the startdate",
 	'site_announcement:action:edit:error:save' => "An unknown error occurent while saving the announcement, please try again",
 	'site_announcement:action:edit:success' => "The announcement was saved",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
-	'' => "",
 );
 
 add_translation("en", $english);
