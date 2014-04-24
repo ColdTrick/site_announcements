@@ -36,7 +36,7 @@ if ($full_view) {
 	$params = $params + $vars;
 	$full_body = elgg_view("object/elements/summary", $params);
 	
-	echo elgg_view_image_block($entity_icon, $full_body);
+	echo elgg_view_image_block($entity_icon, $full_body, array("class" => "elgg-state-notice"));
 } else {
 	// listing (in the admin area)
 	$subtitle = "<strong>" . elgg_echo("site_announcements:edit:startdate") . "</strong>: " . date(elgg_echo("friendlytime:date_format"), $entity->startdate);

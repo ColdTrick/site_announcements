@@ -3,11 +3,14 @@
  * List all the current site announcements and offer the ability to add a new one
  */
 
+elgg_load_js("lightbox");
+elgg_load_css("lightbox");
+
 $add_button = elgg_view("output/url", array(
 	"text" => elgg_echo("add"),
 	"href" => "#site-announcements-edit-form",
-	"rel" => "toggle",
-	"class" => "elgg-button elgg-button-action float-alt"
+	"class" => "elgg-button elgg-button-action float-alt",
+	"rel" => "toggle"
 ));
 
 $content = elgg_view_form("site_announcements/edit", array("id" => "site-announcements-edit-form", "class" => "hidden mbl"));

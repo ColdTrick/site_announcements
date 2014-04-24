@@ -22,6 +22,8 @@ $endmins = (int) get_input("endmins");
 $realstartdate = mktime($starthour, $startmins, 0, date("n", $startdate), date("j", $startdate), date("Y", $startdate));
 $realenddate = mktime($endhour, $endmins, 0, date("n", $enddate), date("j", $enddate), date("Y", $enddate));
 
+$forward_url = REFERER;
+
 if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 	if ($realenddate > $realstartdate) {
 		if (!empty($guid)) {
@@ -56,6 +58,8 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 			if ($entity->save()) {
 				elgg_clear_sticky_form("site_announcement_edit");
 				
+				$forward_url = "admin/administer_utilities/site_announcements";
+				
 				system_message(elgg_echo("site_announcement:action:edit:success"));
 				
 			} else {
@@ -69,4 +73,4 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 	register_error(elgg_echo("site_announcement:action:edit:error:input"));
 }
 
-forward(REFERER);
+forward($forward_url);

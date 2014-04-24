@@ -17,6 +17,7 @@ function site_announcements_init() {
 	
 	// extend css
 	elgg_extend_view("css/admin", "css/site_announcements/admin");
+	elgg_extend_view("css/elgg", "css/site_announcements/site");
 	
 	// extends views
 	elgg_extend_view("page/elements/body", "site_announcements/site", 400);

@@ -3,6 +3,7 @@
 $english = array(
 	'item:object:site_announcement' => "Site announcement",
 	'admin:administer_utilities:site_announcements' => "Site announcements",
+	'admin:administer_utilities:site_announcements:edit' => "Edit site announcement",
 	
 	'site_announcements:type' => "Announcement type",
 	'site_announcements:type:general' => "General",

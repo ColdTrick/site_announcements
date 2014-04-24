@@ -52,6 +52,8 @@ function site_announcements_register_entity_menu_hook($hook, $type, $returnvalue
 				foreach ($returnvalue as $index => $menu_item) {
 					if (!in_array($menu_item->getName(), $allowed_menu_items)) {
 						unset($returnvalue[$index]);
+					} elseif ($menu_item->getName() == "edit") {
+						$menu_item->setHref("admin/administer_utilities/site_announcements/edit?guid=" . $entity->getGUID());
 					}
 				}
 			} else {
