@@ -28,14 +28,14 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 	if ($realenddate > $realstartdate) {
 		if (!empty($guid)) {
 			$entity = get_entity($guid);
-			if (empty($entity) || !elgg_instanceof($entity, "object", "site_announcement")) {
+			if (empty($entity) || !elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
 				unset($entity);
 				
 				register_error(elgg_echo("InvalidParameterException:NoEntityFound"));
 			}
 		} else {
 			$entity = new ElggObject();
-			$entity->subtype = "site_announcement";
+			$entity->subtype = SITE_ANNOUNCEMENT_SUBTYPE;
 			$entity->access_id = ACCESS_PRIVATE;
 			$entity->owner_guid = elgg_get_site_entity()->getGUID();
 			$entity->container_guid = elgg_get_site_entity()->getGUID();

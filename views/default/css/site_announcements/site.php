@@ -22,3 +22,7 @@
 #site-announcements-site .elgg-image-block .elgg-image {
 	margin: 5px 0 0 5px;
 }
+
+#site-announcements-site .elgg-menu-entity {
+	margin-right: 5px;
+}

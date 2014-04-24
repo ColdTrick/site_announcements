@@ -43,7 +43,7 @@ function site_announcements_register_entity_menu_hook($hook, $type, $returnvalue
 	if (!empty($params) && is_array($params)) {
 		$entity = elgg_extract("entity", $params);
 		
-		if (!empty($entity) && elgg_instanceof($entity, "object", "site_announcement")) {
+		if (!empty($entity) && elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
 			
 			// admin has different items than site
 			if (elgg_in_context("admin")) {
@@ -59,6 +59,15 @@ function site_announcements_register_entity_menu_hook($hook, $type, $returnvalue
 			} else {
 				// site menu
 				$returnvalue = array();
+				
+				$returnvalue[] = ElggMenuItem::factory(array(
+					"name" => "mark",
+					"text" => elgg_view_icon("delete"),
+					"title" => elgg_echo("site_announcements:menu:entity:mark"),
+					"href" => "action/site_announcements/mark?guid=" . $entity->getGUID(),
+					"rel" => $entity->getGUID(),
+					"is_action" => true
+				));
 			}
 		}
 		

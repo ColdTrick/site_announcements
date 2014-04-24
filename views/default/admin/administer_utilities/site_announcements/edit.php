@@ -4,9 +4,10 @@
  */
 
 $guid = (int) get_input("guid");
+$entity = false;
 if (!empty($guid)) {
 	$entity = get_entity($guid);
-	if (empty($entity) || !elgg_instanceof($entity, "object", "site_announcement")) {
+	if (empty($entity) || !elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
 		unset($entity);
 	}
 }

@@ -8,7 +8,7 @@
 
 $entity = elgg_extract("entity", $vars);
 
-if (empty($entity) || !elgg_instanceof($entity, "object", "site_announcement")) {
+if (empty($entity) || !elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
 	return;
 }
 

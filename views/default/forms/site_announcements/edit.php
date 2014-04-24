@@ -17,6 +17,7 @@ $type_options = array(
 	"attention" => elgg_echo("site_announcements:type:warning"),
 );
 
+$description = "";
 if (!empty($entity)) {
 	echo elgg_view("input/hidden", array("name" => "guid", "value" => $entity->getGUID()));
 	

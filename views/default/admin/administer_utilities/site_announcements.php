@@ -18,7 +18,7 @@ $content = elgg_view_form("site_announcements/edit", array("id" => "site-announc
 // list current anncouncements
 $options = array(
 	"type" => "object",
-	"subtype" => "site_announcement",
+	"subtype" => SITE_ANNOUNCEMENT_SUBTYPE,
 	"limit" => false,
 	"order_by_metadata" => array(
 		"name" => "startdate",
