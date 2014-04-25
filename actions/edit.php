@@ -36,7 +36,7 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 		} else {
 			$entity = new ElggObject();
 			$entity->subtype = SITE_ANNOUNCEMENT_SUBTYPE;
-			$entity->access_id = ACCESS_PRIVATE;
+			$entity->access_id = $access_id;
 			$entity->owner_guid = elgg_get_site_entity()->getGUID();
 			$entity->container_guid = elgg_get_site_entity()->getGUID();
 			
@@ -50,6 +50,8 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 		if (!empty($entity)) {
 			$entity->description = $description;
 			$entity->access_id = $access_id;
+			
+			$entity->save();
 			
 			$entity->startdate = $realstartdate;
 			$entity->enddate = $realenddate;
