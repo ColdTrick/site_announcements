@@ -36,7 +36,13 @@ if ($full_view) {
 	$params = $params + $vars;
 	$full_body = elgg_view("object/elements/summary", $params);
 	
-	echo elgg_view_image_block($entity_icon, $full_body, array("class" => "elgg-state-notice"));
+	$class = "elgg-state-notice";
+	$announcement_type = $entity->announcement_type;
+	if (!empty($announcement_type)) {
+		$class .= " site-announcement-" . $announcement_type;
+	}
+	
+	echo elgg_view_image_block($entity_icon, $full_body, array("class" => $class));
 } else {
 	// listing (in the admin area)
 	$subtitle = "<strong>" . elgg_echo("site_announcements:edit:startdate") . "</strong>: " . date(elgg_echo("friendlytime:date_format"), $entity->startdate);
