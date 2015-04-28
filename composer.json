@@ -1,0 +1,7 @@
+{
+    "name": "coldtrick/site_announcements",
+    "type": "elgg-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
