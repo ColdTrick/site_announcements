@@ -33,6 +33,7 @@ function site_announcements_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:filter', array('\ColdTrick\SiteAnnouncements\FilterMenu', 'register'));
 	elgg_register_plugin_hook_handler('register', 'menu:footer', array('\ColdTrick\SiteAnnouncements\FooterMenu', 'register'));
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', array('\ColdTrick\SiteAnnouncements\UserHoverMenu', 'register'));
+	elgg_register_plugin_hook_handler('register', 'menu:page', array('\ColdTrick\SiteAnnouncements\PageMenu', 'register'));
 	elgg_register_plugin_hook_handler('access:collections:write', 'user', array('\ColdTrick\SiteAnnouncements\Access', 'userWriteCollections'));
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'containerPermissionsCheck'));
 	elgg_register_plugin_hook_handler('permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'permissionsCheck'));
