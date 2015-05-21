@@ -3,6 +3,8 @@
  * save a site announcement
  */
 
+site_announcements_editor_gatekeeper();
+
 elgg_make_sticky_form("site_announcement_edit");
 
 $guid = (int) get_input("guid");
@@ -31,7 +33,7 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 			if (empty($entity) || !elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
 				unset($entity);
 				
-				register_error(elgg_echo("InvalidParameterException:NoEntityFound"));
+				register_error(elgg_echo("noaccess"));
 			}
 		} else {
 			$entity = new ElggObject();
@@ -43,7 +45,7 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 			if (!$entity->save()) {
 				unset($entity);
 				
-				register_error(elgg_echo("IOException:BaseEntitySaveFailed"));
+				register_error(elgg_echo("save:fail"));
 			}
 		}
 		
@@ -60,7 +62,7 @@ if (!empty($description) && !empty($realstartdate) && !empty($realenddate)) {
 			if ($entity->save()) {
 				elgg_clear_sticky_form("site_announcement_edit");
 				
-				$forward_url = "admin/administer_utilities/site_announcements";
+				$forward_url = "announcements/all";
 				
 				system_message(elgg_echo("site_announcement:action:edit:success"));
 				

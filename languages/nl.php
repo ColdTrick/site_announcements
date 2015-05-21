@@ -1,20 +1,45 @@
 <?php
-$language = array (
+/**
+ * This file was created by Translation Editor v4.0
+ * On 2015-05-21 11:57
+ */
+
+return array (
+  'site_annoucements' => 'Aankondigingen',
+  'site_annoucements:archive' => 'Archief',
+  'site_annoucements:scheduled' => 'Ingepland',
+  'site_annoucements:editors' => 'Berichtgevers',
+  'announcements:add' => 'Nieuwe aankondiging',
+  'site_annoucements:all:title' => 'Actieve aankondigingen',
+  'site_annoucements:archive:title' => 'Aankondigingen archief',
+  'site_annoucements:add:title' => 'Nieuwe aankondiging',
+  'site_annoucements:edit:title' => 'Bewerk aankondiging',
+  'site_annoucements:scheduled:title' => 'Ingeplande aankondigingen',
+  'site_annoucements:editors:title' => 'Berichtgevers',
+  'site_annoucements:filter:active' => 'Actief',
+  'site_annoucements:filter:archive' => 'Archief',
+  'site_annoucements:filter:scheduled' => 'Ingepland',
+  'site_annoucements:filter:editors' => 'Berichtgevers',
+  'site_announcements:user_hover:make_editor' => 'Maak berichtgever',
+  'site_announcements:user_hover:remove_editor' => 'Verwijder berichtgever',
+  'site_annoucements:all:none' => 'Geen actieve aankondigingen',
+  'site_annoucements:archive:none' => 'Geen gearchiveerde aankondigingen',
+  'site_annoucements:scheduled:none' => 'Geen ingeplande aankondigingen',
+  'site_annoucements:editors:none' => 'Geen berichtgevers',
+  'site_announcements:menu:entity:mark' => 'Ik heb dit gelezen',
+  'site_announcements:type:attention' => 'Waarschuwing',
+  'site_announcements:action:toggle_editor:error:is_admin' => '%s is een beheerder en is dus al een berichtgever',
+  'site_announcements:action:toggle_editor:unmake' => '%s is geen berichtgever meer',
+  'site_announcements:action:toggle_editor:make' => '%s is nu een berichtgever',
   'item:object:site_announcement' => 'Aankondigingen',
-  'admin:administer_utilities:site_announcements' => 'Aankondigingen',
-  'admin:administer_utilities:site_announcements:edit' => 'Bewerk de aankondiging',
-  'site_announcements:menu:entity:mark' => 'Gelezen',
   'site_announcements:type' => 'Type aankondiging',
   'site_announcements:type:general' => 'Algemeen',
   'site_announcements:type:info' => 'Informatie',
-  'site_announcements:type:warning' => 'Waarschuwing',
   'site_announcements:edit:text' => 'Bericht',
   'site_announcements:edit:startdate' => 'Startdatum',
   'site_announcements:edit:enddate' => 'Einddatum',
-  'site_announcements:admin:list' => 'Lijst van de aankondigingen',
   'site_announcement:action:edit:error:input' => 'Geef een bericht, startdatum en einddatum op',
   'site_announcement:action:edit:error:time' => 'De einddatum kan niet voor de startdatum zijn',
   'site_announcement:action:edit:error:save' => 'Er is een onbekende fout opgetreden tijdens het opslaan van de aankondiging, probeer het nogmaals',
   'site_announcement:action:edit:success' => 'De aankondiging is opgeslagen',
 );
-add_translation("nl", $language);

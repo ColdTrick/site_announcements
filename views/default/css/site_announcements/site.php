@@ -26,3 +26,7 @@
 #site-announcements-site .elgg-menu-entity {
 	margin-right: 5px;
 }
+
+.elgg-form-site-announcements-edit input[type="text"] {
+	width: 150px;
+}

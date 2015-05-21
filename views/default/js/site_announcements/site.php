@@ -17,6 +17,8 @@ elgg.site_announcements.init = function() {
 			}
 		});
 	});
+
+	elgg.ui.registerTogglableMenuItems('announcement-make-editor', 'announcement-remove-editor');
 }
 
 //register init hook

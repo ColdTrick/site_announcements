@@ -3,6 +3,8 @@
  * delete a site announcement
  */
 
+site_announcements_editor_gatekeeper();
+
 $guid = (int) get_input("guid");
 
 if (!empty($guid)) {
@@ -26,4 +28,4 @@ if (!empty($guid)) {
 	register_error(elgg_echo("InvalidParameterException:MissingParameter"));
 }
 
-forward("admin/administer_utilities/site_announcements");
+forward(REFERER);
