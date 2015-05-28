@@ -37,6 +37,7 @@ function site_announcements_init() {
 	elgg_register_plugin_hook_handler('access:collections:write', 'user', array('\ColdTrick\SiteAnnouncements\Access', 'userWriteCollections'));
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'containerPermissionsCheck'));
 	elgg_register_plugin_hook_handler('permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'permissionsCheck'));
+	elgg_register_plugin_hook_handler('permissions_check:comment', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'commentPermissionsCheck'));
 	
 	// register actions
 	elgg_register_action('site_announcements/edit', dirname(__FILE__) . '/actions/edit.php');

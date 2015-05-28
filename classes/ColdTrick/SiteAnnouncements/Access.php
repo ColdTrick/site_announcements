@@ -121,4 +121,29 @@ class Access {
 		
 		return $returnvalue;
 	}
+	
+	/**
+	 * Check the can comment
+	 *
+	 * @param string $hook        the name of the hook
+	 * @param string $type        the type of the hook
+	 * @param array  $returnvalue current returnvalue
+	 * @param array  $params      supplied params
+	 *
+	 * @return bool
+	 */
+	public static function commentPermissionsCheck($hook, $type, $returnvalue, $params) {
+		
+		if (empty($params) || !is_array($params)) {
+			return $returnvalue;
+		}
+		
+		$entity = elgg_extract('entity', $params);
+		
+		if (empty($entity) || !elgg_instanceof($entity, 'object', SITE_ANNOUNCEMENT_SUBTYPE)) {
+			return $returnvalue;
+		}
+		
+		return false;
+	}
 }
