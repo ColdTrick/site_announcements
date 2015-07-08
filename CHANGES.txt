@@ -1,6 +1,15 @@
 Version history
 ===============
 
+2.1 (2015-07-08):
+
+- added: site announcers
+- added: composer support
+- added: extra class added to imageblock of each announcement for extra styling options #1
+- added: page menu item on admin side for backwards compatibility
+- changed: management moved to frontend
+- fixed: comments shouldn't be allowed on announcements
+
 2.0 (2014-06-14):
 
 - changes for Elgg 1.9
