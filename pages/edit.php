@@ -8,11 +8,9 @@ site_announcements_editor_gatekeeper();
 
 // get entity
 $guid = (int) get_input('guid');
+elgg_entity_gatekeeper($guid, 'object', SITE_ANNOUNCEMENT_SUBTYPE);
+
 $entity = get_entity($guid);
-if (empty($entity) || !elgg_instanceof($entity, 'object', SITE_ANNOUNCEMENT_SUBTYPE)) {
-	register_error(elgg_echo('noaccess'));
-	forward(REFERER);
-}
 
 // breadcrumb
 elgg_push_breadcrumb(elgg_echo('site_annoucements'), 'announcements/all');
