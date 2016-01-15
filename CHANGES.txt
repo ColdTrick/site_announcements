@@ -1,6 +1,13 @@
 Version history
 ===============
 
+3.0 (2016-01-15):
+
+- changed: improved default layout
+- fixed: call to deprecated jQuery function
+- fixed: elgg requirements
+- fixed: input/date layout on older versions of Elgg
+
 2.1 (2015-07-08):
 
 - added: site announcers
