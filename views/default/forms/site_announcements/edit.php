@@ -55,7 +55,7 @@ echo "</div>";
 
 echo "<div>";
 echo "<label for='startdate'>" . elgg_echo("site_announcements:edit:startdate") . "</label>";
-echo elgg_view("input/date", array("name" => "startdate", "value" => $startdate, "timestamp" => true, "class" => "mhs"));
+echo elgg_view("input/date", array("name" => "startdate", "value" => $startdate, "timestamp" => true, "class" => "mhs elgg-col-1of5"));
 echo "@";
 echo elgg_view("input/select", array("name" => "starthour", "value" => $starthour, "options" => $hour_options, "class" => "mhs"));
 echo ":";
@@ -64,7 +64,7 @@ echo "</div>";
 
 echo "<div>";
 echo "<label for='enddate'>" . elgg_echo("site_announcements:edit:enddate") . "</label>";
-echo elgg_view("input/date", array("name" => "enddate", "value" => $enddate, "timestamp" => true, "class" => "mhs"));
+echo elgg_view("input/date", array("name" => "enddate", "value" => $enddate, "timestamp" => true, "class" => "mhs elgg-col-1of5"));
 echo "@";
 echo elgg_view("input/select", array("name" => "endhour", "value" => $endhour, "options" => $hour_options, "class" => "mhs"));
 echo ":";
