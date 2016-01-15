@@ -1,6 +1,12 @@
 Version history
 ===============
 
+2.2 (2016-01-15):
+
+- added: composer support
+- added: extra class added to imageblock of each announcement for extra styling options #1
+- fixed: call to deprecated jQuery function
+
 2.0 (2014-06-14):
 
 - changes for Elgg 1.9
