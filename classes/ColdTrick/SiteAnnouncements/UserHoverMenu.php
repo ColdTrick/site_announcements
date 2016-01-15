@@ -24,8 +24,8 @@ class UserHoverMenu {
 			return $returnvalue;
 		}
 		
-		$entity = elgg_extract("entity", $params);
-		if (empty($entity) || !elgg_instanceof($entity, "user")) {
+		$entity = elgg_extract('entity', $params);
+		if (!($entity instanceof \ElggUser)) {
 			return $returnvalue;
 		}
 		

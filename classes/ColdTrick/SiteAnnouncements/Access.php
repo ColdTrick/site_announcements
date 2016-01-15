@@ -68,7 +68,7 @@ class Access {
 		$user = elgg_extract('user', $params);
 		$subtype = elgg_extract('subtype', $params);
 		
-		if (empty($user) || !elgg_instanceof($user, 'user')) {
+		if (!($user instanceof \ElggUser)) {
 			return $returnvalue;
 		}
 		
@@ -107,7 +107,7 @@ class Access {
 		$user = elgg_extract('user', $params);
 		$entity = elgg_extract('entity', $params);
 		
-		if (empty($user) || !elgg_instanceof($user, 'user')) {
+		if (!($user instanceof \ElggUser)) {
 			return $returnvalue;
 		}
 		
