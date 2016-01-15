@@ -10,23 +10,11 @@
 	margin-bottom: 5px;
 }
 
-#site-announcements-site h3,
-#site-announcements-site .elgg-subtext {
-	display: none;
+#site-announcements-site .elgg-message {
+	cursor: default;
 }
 
 #site-announcements-site .elgg-item .elgg-content {
-	margin: 5px;
-}
-
-#site-announcements-site .elgg-image-block .elgg-image {
-	margin: 5px 0 0 5px;
-}
-
-#site-announcements-site .elgg-menu-entity {
-	margin-right: 5px;
-}
-
-.elgg-form-site-announcements-edit input[type="text"] {
-	width: 150px;
+	margin: 0;
+	clear: none;
 }

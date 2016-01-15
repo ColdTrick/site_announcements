@@ -30,13 +30,14 @@ if ($full_view) {
 	
 	$params = array(
 		"entity" => $entity,
+		"title" => false,
 		"metadata" => $entity_menu,
 		"content" => $content,
 	);
 	$params = $params + $vars;
 	$full_body = elgg_view("object/elements/summary", $params);
 	
-	$class = "elgg-state-notice";
+	$class = "elgg-message elgg-state-notice";
 	$announcement_type = $entity->announcement_type;
 	if (!empty($announcement_type)) {
 		$class .= " site-announcement-" . $announcement_type;
