@@ -19,7 +19,7 @@ if (!empty($entity->announcement_type)) {
 	));
 } else {
 	echo elgg_view('output/img', array(
-		'src' => '_graphics/spacer.gif',
+		'src' => elgg_get_simplecache_url('spacer.gif'),
 		'alt' => elgg_echo('site_announcements:type:general')
 	));
 }
