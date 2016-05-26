@@ -1,6 +1,11 @@
 Version history
 ===============
 
+4.0 (2016-05-26):
+
+- changed: increased Elgg requirement to 2.0
+- fixed: default icon uses incorrect icon url
+
 3.0 (2016-01-15):
 
 - changed: improved default layout
