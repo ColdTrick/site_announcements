@@ -19,7 +19,7 @@ elgg_register_event_handler('init', 'system', 'site_announcements_init');
 function site_announcements_init() {
 	
 	// extend css / js
-	elgg_extend_view('css/elgg', 'css/site_announcements/site');
+	elgg_extend_view('elgg.css', 'css/site_announcements/site.css');
 	elgg_extend_view('elgg.js', 'js/site_announcements/user_hover.js');
 	
 	// pagehandler
