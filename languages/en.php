@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 	'item:object:site_announcement' => "Site announcement",
 	
 	'site_annoucements' => "Announcements",
@@ -8,6 +8,10 @@ return array(
 	'site_annoucements:scheduled' => "Scheduled",
 	'site_annoucements:editors' => "Announcers",
 	'announcements:add' => "Add announcement",
+
+	// plugin settings
+	'site_announcements:settings:archive_cleanup' => "Delete expired announcements after a number of days",
+	'site_announcements:settings:archive_cleanup:help' => "If you don't want the archive to become too large, you can set a number of days after which expired announcements will be deleted. 0 or empty to not cleanup the announcements.",
 	
 	'site_annoucements:all:title' => "Active announcements",
 	'site_annoucements:archive:title' => "Announcements archive",
@@ -48,4 +52,4 @@ return array(
 	'site_announcements:action:toggle_editor:error:is_admin' => "%s is an administrator and is already an announcer",
 	'site_announcements:action:toggle_editor:unmake' => "%s is no longer an announcer",
 	'site_announcements:action:toggle_editor:make' => "%s is now an announcer",
-);
+];

@@ -38,6 +38,7 @@ function site_announcements_init() {
 	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\SiteAnnouncements\Access::containerPermissionsCheck');
 	elgg_register_plugin_hook_handler('permissions_check', 'object', '\ColdTrick\SiteAnnouncements\Access::permissionsCheck');
 	elgg_register_plugin_hook_handler('permissions_check:comment', 'object', '\ColdTrick\SiteAnnouncements\Access::commentPermissionsCheck');
+	elgg_register_plugin_hook_handler('cron', 'daily', '\ColdTrick\SiteAnnouncements\Cron::cleanupExpiredAnnouncements');
 	
 	// register actions
 	elgg_register_action('site_announcements/edit', dirname(__FILE__) . '/actions/edit.php');

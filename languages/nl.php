@@ -1,10 +1,12 @@
 <?php
 /**
- * This file was created by Translation Editor v4.0
- * On 2015-05-21 11:57
+ * This file was created by Translation Editor v5.2
+ * On 2017-02-01 16:17
  */
 
 return array (
+  'site_announcements:settings:archive_cleanup' => 'Verwijder verlopen aankondigingen na een aantal dagen',
+  'site_announcements:settings:archive_cleanup:help' => 'Indien het archief niet te groot mag worden, kun je een aantal dagen opgeven waarna een verlopen aankondiging zal worden verwijderd. 0 of leeg om geen aankondigingen te verwijderen.',
   'site_annoucements' => 'Aankondigingen',
   'site_annoucements:archive' => 'Archief',
   'site_annoucements:scheduled' => 'Ingepland',
