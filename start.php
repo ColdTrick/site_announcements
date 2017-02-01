@@ -23,21 +23,21 @@ function site_announcements_init() {
 	elgg_extend_view('js/elgg', 'js/site_announcements/site');
 	
 	// pagehandler
-	elgg_register_page_handler('announcements', array('\ColdTrick\SiteAnnouncements\PageHandler', 'announcements'));
+	elgg_register_page_handler('announcements', '\ColdTrick\SiteAnnouncements\PageHandler::announcements');
 	
 	// extends views
 	elgg_extend_view('page/elements/body', 'site_announcements/site', 400);
 	
 	// register plugin hooks
-	elgg_register_plugin_hook_handler('register', 'menu:entity', array('\ColdTrick\SiteAnnouncements\EntityMenu', 'register'));
-	elgg_register_plugin_hook_handler('register', 'menu:filter', array('\ColdTrick\SiteAnnouncements\FilterMenu', 'register'));
-	elgg_register_plugin_hook_handler('register', 'menu:footer', array('\ColdTrick\SiteAnnouncements\FooterMenu', 'register'));
-	elgg_register_plugin_hook_handler('register', 'menu:user_hover', array('\ColdTrick\SiteAnnouncements\UserHoverMenu', 'register'));
-	elgg_register_plugin_hook_handler('register', 'menu:page', array('\ColdTrick\SiteAnnouncements\PageMenu', 'register'));
-	elgg_register_plugin_hook_handler('access:collections:write', 'user', array('\ColdTrick\SiteAnnouncements\Access', 'userWriteCollections'));
-	elgg_register_plugin_hook_handler('container_permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'containerPermissionsCheck'));
-	elgg_register_plugin_hook_handler('permissions_check', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'permissionsCheck'));
-	elgg_register_plugin_hook_handler('permissions_check:comment', 'object', array('\ColdTrick\SiteAnnouncements\Access', 'commentPermissionsCheck'));
+	elgg_register_plugin_hook_handler('register', 'menu:entity', '\ColdTrick\SiteAnnouncements\EntityMenu::register');
+	elgg_register_plugin_hook_handler('register', 'menu:filter', '\ColdTrick\SiteAnnouncements\FilterMenu::register');
+	elgg_register_plugin_hook_handler('register', 'menu:footer', '\ColdTrick\SiteAnnouncements\FooterMenu::register');
+	elgg_register_plugin_hook_handler('register', 'menu:user_hover', '\ColdTrick\SiteAnnouncements\UserHoverMenu::register');
+	elgg_register_plugin_hook_handler('register', 'menu:page', '\ColdTrick\SiteAnnouncements\PageMenu::register');
+	elgg_register_plugin_hook_handler('access:collections:write', 'user', '\ColdTrick\SiteAnnouncements\Access::userWriteCollections');
+	elgg_register_plugin_hook_handler('container_permissions_check', 'object', '\ColdTrick\SiteAnnouncements\Access::containerPermissionsCheck');
+	elgg_register_plugin_hook_handler('permissions_check', 'object', '\ColdTrick\SiteAnnouncements\Access::permissionsCheck');
+	elgg_register_plugin_hook_handler('permissions_check:comment', 'object', '\ColdTrick\SiteAnnouncements\Access::commentPermissionsCheck');
 	
 	// register actions
 	elgg_register_action('site_announcements/edit', dirname(__FILE__) . '/actions/edit.php');
