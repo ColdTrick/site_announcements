@@ -20,7 +20,7 @@ function site_announcements_init() {
 	
 	// extend css / js
 	elgg_extend_view('css/elgg', 'css/site_announcements/site');
-	elgg_extend_view('js/elgg', 'js/site_announcements/site');
+	elgg_extend_view('elgg.js', 'js/site_announcements/user_hover.js');
 	
 	// pagehandler
 	elgg_register_page_handler('announcements', '\ColdTrick\SiteAnnouncements\PageHandler::announcements');

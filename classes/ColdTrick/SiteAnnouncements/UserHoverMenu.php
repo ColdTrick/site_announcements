@@ -12,47 +12,45 @@ class UserHoverMenu {
 	 * @param \ElggMenuItem[] $returnvalue current returnvalue
 	 * @param array           $params      supplied params
 	 *
-	 * @return \ElggMenuItem[]
+	 * @return void|\ElggMenuItem[]
 	 */
 	public static function register($hook, $type, $returnvalue, $params) {
 		
 		if (!elgg_is_admin_logged_in()) {
-			return $returnvalue;
-		}
-		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
+			return;
 		}
 		
 		$entity = elgg_extract('entity', $params);
 		if (!($entity instanceof \ElggUser)) {
-			return $returnvalue;
+			return ;
 		}
 		
 		if ($entity->isAdmin()) {
 			// user is already admin
-			return $returnvalue;
+			return;
 		}
 		
 		$is_editor = site_announcements_is_editor($entity);
 		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'announcement_make_editor',
 			'text' => elgg_echo('site_announcements:user_hover:make_editor'),
 			'href' => "action/site_announcements/toggle_editor?user_guid={$entity->getGUID()}",
 			'item_class' => $is_editor ? 'hidden' : '',
 			'section' => 'admin',
-			'priority' => 400
-		));
+			'priority' => 400,
+			'is_action' => true,
+		]);
 		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'announcement_remove_editor',
 			'text' => elgg_echo('site_announcements:user_hover:remove_editor'),
 			'href' => "action/site_announcements/toggle_editor?user_guid={$entity->getGUID()}",
 			'item_class' => $is_editor ? '' : 'hidden',
 			'section' => 'admin',
-			'priority' => 401
-		));
+			'priority' => 401,
+			'is_action' => true,
+		]);
 		
 		return $returnvalue;
 	}
