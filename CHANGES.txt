@@ -1,6 +1,13 @@
 Version history
 ===============
 
+5.0 (2017-02-27):
+
+- added: plugin setting to cleanup expired announcements
+- changed: increased minimal Elgg version requirement to 2.3
+- changed: moved css to css-file
+- changed: split javascript into view and amd module
+
 4.0 (2016-05-26):
 
 - changed: increased Elgg requirement to 2.0
