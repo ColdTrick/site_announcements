@@ -26,7 +26,7 @@ function site_announcements_init() {
 	elgg_register_page_handler('announcements', '\ColdTrick\SiteAnnouncements\PageHandler::announcements');
 	
 	// extends views
-	elgg_extend_view('page/elements/body', 'site_announcements/site', 400);
+	elgg_extend_view('page/default', 'site_announcements/page_shell', 400);
 	
 	// register plugin hooks
 	elgg_register_plugin_hook_handler('register', 'menu:entity', '\ColdTrick\SiteAnnouncements\EntityMenu::register');
