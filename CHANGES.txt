@@ -1,6 +1,10 @@
 Version history
 ===============
 
+5.0.1 (2017-03-24):
+
+- fixed: only show site announcements in default page shell
+
 5.0 (2017-02-27):
 
 - added: plugin setting to cleanup expired announcements
