@@ -21,6 +21,9 @@ class Cron {
 			return;
 		}
 		
+		echo 'Stating SiteAnnouncements cleanup' . PHP_EOL;
+		elgg_log('Stating SiteAnnouncements cleanup', 'NOTICE');
+		
 		$time = (int) elgg_extract('time', $params, time());
 		
 		$options = [
@@ -43,5 +46,8 @@ class Cron {
 		
 		// restore access
 		elgg_set_ignore_access($ia);
+		
+		echo 'Done with SiteAnnouncements cleanup' . PHP_EOL;
+		elgg_log('Done with SiteAnnouncements cleanup', 'NOTICE');
 	}
 }
