@@ -1,6 +1,10 @@
 Version history
 ===============
 
+5.0.2 (2017-09-06):
+
+- several small chores/fixes
+
 5.0.1 (2017-03-24):
 
 - fixed: only show site announcements in default page shell
