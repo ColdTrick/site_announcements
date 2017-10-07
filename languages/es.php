@@ -1,0 +1,47 @@
+<?php
+/**
+ * This file was created by Translation Editor v6.0
+ * On 2017-10-07 18:05
+ */
+
+return array (
+  'site_annoucements' => 'Anuncios',
+  'site_annoucements:archive' => 'Archivo',
+  'site_annoucements:scheduled' => 'Programado',
+  'site_annoucements:editors' => 'Anunciantes',
+  'announcements:add' => 'Añadir anuncio',
+  'site_annoucements:all:title' => 'Activar anuncios',
+  'site_annoucements:archive:title' => 'Archivo de anuncios',
+  'site_annoucements:add:title' => 'Añadir anuncio',
+  'site_annoucements:edit:title' => 'Editar anuncio',
+  'site_annoucements:scheduled:title' => 'Programar anuncios',
+  'item:object:site_announcement' => 'Anuncio del sitio',
+  'site_annoucements:editors:title' => 'Anunciantes',
+  'site_annoucements:filter:active' => 'Activo',
+  'site_annoucements:filter:archive' => 'Archivo',
+  'site_annoucements:filter:scheduled' => 'Programado',
+  'site_annoucements:filter:editors' => 'Anunciantes',
+  'site_announcements:user_hover:make_editor' => 'Hacer anunciante',
+  'site_announcements:user_hover:remove_editor' => 'Borrar anunciante',
+  'site_annoucements:all:none' => 'Anuncios no activos',
+  'site_annoucements:archive:none' => 'Anuncios no archivados',
+  'site_annoucements:scheduled:none' => 'anuncios no programados',
+  'site_annoucements:editors:none' => 'Sin anunciantes',
+  'site_announcements:menu:entity:mark' => 'He visto esto',
+  'site_announcements:type' => 'Tipo de anuncio',
+  'site_announcements:type:general' => 'General',
+  'site_announcements:type:info' => 'Informacion',
+  'site_announcements:type:attention' => 'ATENCION',
+  'site_announcements:edit:text' => 'Anuncio',
+  'site_announcements:edit:startdate' => 'Fecha inicio',
+  'site_announcements:edit:enddate' => 'Fecha final',
+  'site_announcement:action:edit:error:input' => 'Proporcione un texto de anuncio, fecha de inicio y fecha de finalización',
+  'site_announcement:action:edit:error:time' => 'La fecha de finalización no puede ser anterior a la fecha de inicio',
+  'site_announcement:action:edit:error:save' => 'Ocurrió un error desconocido al guardar el anuncio. Inténtelo de nuevo.',
+  'site_announcement:action:edit:success' => 'El anuncio fue guardado',
+  'site_announcements:action:toggle_editor:error:is_admin' => '%s es un administrador y ya es un anunciante',
+  'site_announcements:action:toggle_editor:unmake' => '%s ya no es un anunciante',
+  'site_announcements:action:toggle_editor:make' => '%s ahora es un anunciante',
+  'site_announcements:settings:archive_cleanup' => 'Eliminar anuncios caducados después de varios días',
+  'site_announcements:settings:archive_cleanup:help' => 'Si no desea que el archivo se convierta en demasiado grande, puede establecer un número de días después de los cuales se eliminarán los anuncios caducados. 0 o vacío para no limpiar los anuncios.',
+);
