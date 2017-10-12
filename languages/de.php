@@ -7,7 +7,7 @@ return [
 	'site_annoucements:archive' => "Archiv",
 	'site_annoucements:scheduled' => "Geplant",
 	'site_annoucements:editors' => "Ankündiger",
-	'announcements:add' => "Ankündigungen hinzufügen",
+	'announcements:add' => "Ankündigung hinzufügen",
 
 	// plugin settings
 	'site_announcements:settings:archive_cleanup' => "Entferne abgelaufene Ankündigungen nach einer Anzahl von Tagen",
@@ -40,7 +40,7 @@ return [
 	'site_announcements:type:info' => "Information",
 	'site_announcements:type:attention' => "Warnung",
 	
-	'site_announcements:edit:text' => "Ankündigung",
+	'site_announcements:edit:text' => "Ankündigungstext",
 	'site_announcements:edit:startdate' => "Anfangsdatum",
 	'site_announcements:edit:enddate' => "Enddatum",
 	
