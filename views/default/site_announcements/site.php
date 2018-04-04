@@ -1,11 +1,15 @@
 <?php
+
+use Elgg\Database\QueryBuilder;
+use Elgg\Database\Clauses\WhereClause;
+
 /**
  * Prepend of page/elements/body to show the current site announcements
  */
 
 $options = [
 	'type' => 'object',
-	'subtype' => SITE_ANNOUNCEMENT_SUBTYPE,
+	'subtype' => \ColdTrick\SiteAnnouncements\SiteAnnouncement::SUBTYPE,
 	'limit' => false,
 	'metadata_name_value_pairs' => [
 		[
@@ -31,14 +35,15 @@ $options = [
 // exclude read announcments
 if (elgg_is_logged_in()) {
 	$user_guid = elgg_get_logged_in_user_guid();
-	$dbprefix = elgg_get_config('dbprefix');
 	
-	$options["wheres"] = [
-		"e.guid NOT IN (SELECT guid_two
-		FROM {$dbprefix}entity_relationships rc
-		WHERE rc.guid_one = {$user_guid}
-		AND rc.relationship = '" . SITE_ANNOUNCEMENT_RELATIONSHIP . "')",
-	];
+	$options['wheres'][] = function(QueryBuilder $qb, $main_alias) use ($user_guid) {
+		$subquery = $qb->subquery('entity_relationships', 'rc');
+		$subquery->select('guid_two')
+			->where($qb->compare('rc.guid_one', '=', $user_guid, ELGG_VALUE_INTEGER))
+			->andWhere($qb->compare('rc.relationship', '=', \ColdTrick\SiteAnnouncements\SiteAnnouncement::READ_RELATIONSHIP, ELGG_VALUE_STRING));
+
+		return $qb->compare("{$main_alias}.guid", "NOT IN", $subquery->getSQL());
+	};
 } else {
 	if (isset($_COOKIE['site_announcements'])) {
 		$guids = string_to_tag_array($_COOKIE['site_announcements']);
@@ -52,17 +57,21 @@ if (elgg_is_logged_in()) {
 		
 		if (!empty($guids)) {
 			$options['wheres'] = [
-				'e.guid NOT IN (' . implode(',', $guids) . ')',
+				new WhereClause('e.guid NOT IN (' . implode(',', $guids) . ')'),
 			];
 		}
 	}
 }
 
-elgg_push_context('site_announcements_header');
-$content = elgg_list_entities_from_metadata($options);
-elgg_pop_context();
-
-if (!empty($content)) {
-	elgg_require_js('site_announcements/announcement');
-	echo elgg_format_element('div', ['id' => 'site-announcements-site'], $content);
+$entities = elgg_get_entities($options);
+if (empty($entities)) {
+	return;
 }
+
+$content = '';
+foreach ($entities as $entity) {
+	$content .= elgg_view_entity($entity);
+}
+
+elgg_require_js('site_announcements/announcement');
+echo elgg_format_element('div', ['id' => 'site-announcements-site'], $content);

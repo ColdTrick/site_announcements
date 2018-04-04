@@ -16,12 +16,12 @@ class FooterMenu {
 	 */
 	public static function register($hook, $type, $returnvalue, $params) {
 		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'site_announcements',
-			'text' => elgg_echo('site_annoucements'),
+			'text' => elgg_echo('site_announcements'),
 			'href' => 'announcements/all',
-			'is_trusted' => true
-		));
+			'is_trusted' => true,
+		]);
 		
 		return $returnvalue;
 	}

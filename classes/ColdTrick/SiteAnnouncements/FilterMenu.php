@@ -16,49 +16,38 @@ class FilterMenu {
 	 */
 	public static function register($hook, $type, $returnvalue, $params) {
 		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
-		}
-		
-		if (!elgg_in_context('announcements')) {
-			return $returnvalue;
-		}
-		
-		// reset menu items
-		$returnvalue = array();
-		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'all',
-			'text' => elgg_echo('site_annoucements:filter:active'),
+			'text' => elgg_echo('site_announcements:filter:active'),
 			'href' => 'announcements/all',
 			'priority' => 100,
-			'is_trusted' => true
-		));
+			'is_trusted' => true,
+		]);
 		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'archive',
-			'text' => elgg_echo('site_annoucements:filter:archive'),
+			'text' => elgg_echo('site_announcements:filter:archive'),
 			'href' => 'announcements/archive',
 			'priority' => 200,
-			'is_trusted' => true
-		));
+			'is_trusted' => true,
+		]);
 		
-		if (site_announcements_is_editor()) {
-			$returnvalue[] = \ElggMenuItem::factory(array(
+		if (Gatekeeper::isEditor()) {
+			$returnvalue[] = \ElggMenuItem::factory([
 				'name' => 'scheduled',
-				'text' => elgg_echo('site_annoucements:filter:scheduled'),
+				'text' => elgg_echo('site_announcements:filter:scheduled'),
 				'href' => 'announcements/scheduled',
 				'priority' => 300,
-				'is_trusted' => true
-			));
+				'is_trusted' => true,
+			]);
 			
-			$returnvalue[] = \ElggMenuItem::factory(array(
+			$returnvalue[] = \ElggMenuItem::factory([
 				'name' => 'editors',
-				'text' => elgg_echo('site_annoucements:filter:editors'),
+				'text' => elgg_echo('site_announcements:filter:editors'),
 				'href' => 'announcements/editors',
 				'priority' => 400,
-				'is_trusted' => true
-			));
+				'is_trusted' => true,
+			]);
 		}
 		
 		return $returnvalue;

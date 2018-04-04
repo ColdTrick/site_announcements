@@ -3,35 +3,35 @@
 return [
 	'item:object:site_announcement' => "Site announcement",
 	
-	'site_annoucements' => "Announcements",
-	'site_annoucements:archive' => "Archive",
-	'site_annoucements:scheduled' => "Scheduled",
-	'site_annoucements:editors' => "Announcers",
+	'site_announcements' => "Announcements",
+	'site_announcements:archive' => "Archive",
+	'site_announcements:scheduled' => "Scheduled",
+	'site_announcements:editors' => "Announcers",
 	'announcements:add' => "Add announcement",
 
 	// plugin settings
 	'site_announcements:settings:archive_cleanup' => "Delete expired announcements after a number of days",
 	'site_announcements:settings:archive_cleanup:help' => "If you don't want the archive to become too large, you can set a number of days after which expired announcements will be deleted. 0 or empty to not cleanup the announcements.",
 	
-	'site_annoucements:all:title' => "Active announcements",
-	'site_annoucements:archive:title' => "Announcements archive",
-	'site_annoucements:add:title' => "Add announcement",
-	'site_annoucements:edit:title' => "Edit announcement",
-	'site_annoucements:scheduled:title' => "Scheduled announcements",
-	'site_annoucements:editors:title' => "Announcers",
+	'site_announcements:all:title' => "Active announcements",
+	'site_announcements:archive:title' => "Announcements archive",
+	'site_announcements:add:title' => "Add announcement",
+	'site_announcements:edit:title' => "Edit announcement",
+	'site_announcements:scheduled:title' => "Scheduled announcements",
+	'site_announcements:editors:title' => "Announcers",
 	
-	'site_annoucements:filter:active' => "Active",
-	'site_annoucements:filter:archive' => "Archive",
-	'site_annoucements:filter:scheduled' => "Scheduled",
-	'site_annoucements:filter:editors' => "Announcers",
+	'site_announcements:filter:active' => "Active",
+	'site_announcements:filter:archive' => "Archive",
+	'site_announcements:filter:scheduled' => "Scheduled",
+	'site_announcements:filter:editors' => "Announcers",
 	
 	'site_announcements:user_hover:make_editor' => "Make announcer",
 	'site_announcements:user_hover:remove_editor' => "Remove announcer",
 	
-	'site_annoucements:all:none' => "No active announcements",
-	'site_annoucements:archive:none' => "No archived annoucements",
-	'site_annoucements:scheduled:none' => "No scheduled annoucements",
-	'site_annoucements:editors:none' => "No annoucers",
+	'site_announcements:all:none' => "No active announcements",
+	'site_announcements:archive:none' => "No archived announcements",
+	'site_announcements:scheduled:none' => "No scheduled announcements",
+	'site_announcements:editors:none' => "No annoucers",
 	
 	'site_announcements:menu:entity:mark' => "I've seen this",
 	

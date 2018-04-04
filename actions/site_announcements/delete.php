@@ -3,14 +3,12 @@
  * delete a site announcement
  */
 
-site_announcements_editor_gatekeeper();
-
 $guid = (int) get_input("guid");
 
 if (!empty($guid)) {
 	$entity = get_entity($guid);
 	if (!empty($entity) && $entity->canEdit()) {
-		if (elgg_instanceof($entity, "object", SITE_ANNOUNCEMENT_SUBTYPE)) {
+		if (elgg_instanceof($entity, "object", \ColdTrick\SiteAnnouncements\SiteAnnouncement::SUBTYPE)) {
 			$title = elgg_get_excerpt($entity->description, 50);
 
 			if ($entity->delete()) {

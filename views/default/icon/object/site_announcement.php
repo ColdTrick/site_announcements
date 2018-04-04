@@ -7,19 +7,21 @@
  */
 
 $entity = elgg_extract('entity', $vars);
-
-if (empty($entity) || !elgg_instanceof($entity, 'object', SITE_ANNOUNCEMENT_SUBTYPE)) {
+if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
 	return;
 }
 
-if (!empty($entity->announcement_type)) {
-	echo elgg_view_icon($entity->announcement_type, array(
-		'class' => 'site-announcements-icon',
-		'title' => elgg_echo("site_announcements:type:{$entity->announcement_type}")
-	));
-} else {
-	echo elgg_view('output/img', array(
-		'src' => elgg_get_simplecache_url('spacer.gif'),
-		'alt' => elgg_echo('site_announcements:type:general')
-	));
+$icon_type = $entity->announcement_type ?: 'hand-point-right';
+$title = '';
+
+if (empty($icon_type)) {
+	$icon_type = 'hand-point-right';
+	$title = elgg_echo('site_announcements:type:general');
+} elseif (elgg_language_key_exists("site_announcements:type:{$icon_type}")) {
+	$title = elgg_echo("site_announcements:type:{$icon_type}");
 }
+
+echo elgg_view_icon($icon_type, [
+	'class' => 'site-announcements-icon',
+	'title' => $title,
+]);

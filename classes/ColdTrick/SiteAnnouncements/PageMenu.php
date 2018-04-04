@@ -17,17 +17,17 @@ class PageMenu {
 	public static function register($hook, $type, $returnvalue, $params) {
 		
 		if (!elgg_in_context('admin')) {
-			return $returnvalue;
+			return;
 		}
 		
-		$returnvalue[] = \ElggMenuItem::factory(array(
+		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'site_announcements',
-			'text' => elgg_echo('site_annoucements'),
+			'text' => elgg_echo('site_announcements'),
 			'href' => 'announcements/all',
 			'is_trusted' => true,
 			'section' => 'administer',
 			'parent_name' => 'administer_utilities'
-		));
+		]);
 		
 		return $returnvalue;
 	}

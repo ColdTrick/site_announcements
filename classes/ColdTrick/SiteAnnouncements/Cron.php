@@ -21,14 +21,14 @@ class Cron {
 			return;
 		}
 		
-		echo 'Stating SiteAnnouncements cleanup' . PHP_EOL;
-		elgg_log('Stating SiteAnnouncements cleanup', 'NOTICE');
+		echo 'Starting SiteAnnouncements cleanup' . PHP_EOL;
+		elgg_log('Starting SiteAnnouncements cleanup', 'NOTICE');
 		
 		$time = (int) elgg_extract('time', $params, time());
 		
 		$options = [
 			'type' => 'object',
-			'subtype' => SITE_ANNOUNCEMENT_SUBTYPE,
+			'subtype' => SiteAnnouncement::SUBTYPE,
 			'limit' => false,
 			'metadata_name_value_pairs' => [
 				'name' => 'enddate',

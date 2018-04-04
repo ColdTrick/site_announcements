@@ -21,7 +21,7 @@ class UserHoverMenu {
 		}
 		
 		$entity = elgg_extract('entity', $params);
-		if (!($entity instanceof \ElggUser)) {
+		if (!$entity instanceof \ElggUser) {
 			return ;
 		}
 		
@@ -30,26 +30,26 @@ class UserHoverMenu {
 			return;
 		}
 		
-		$is_editor = site_announcements_is_editor($entity);
+		$is_editor = Gatekeeper::isEditor($entity);
 		
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'announcement_make_editor',
 			'text' => elgg_echo('site_announcements:user_hover:make_editor'),
-			'href' => "action/site_announcements/toggle_editor?user_guid={$entity->getGUID()}",
+			'icon' => 'bullhorn',
+			'href' => elgg_generate_action_url('site_announcements/toggle_editor', ['user_guid' => $entity->guid]),
 			'item_class' => $is_editor ? 'hidden' : '',
 			'section' => 'admin',
 			'priority' => 400,
-			'is_action' => true,
 		]);
 		
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'announcement_remove_editor',
 			'text' => elgg_echo('site_announcements:user_hover:remove_editor'),
-			'href' => "action/site_announcements/toggle_editor?user_guid={$entity->getGUID()}",
+			'icon' => 'bullhorn',
+			'href' => elgg_generate_action_url('site_announcements/toggle_editor', ['user_guid' => $entity->guid]),
 			'item_class' => $is_editor ? '' : 'hidden',
 			'section' => 'admin',
 			'priority' => 401,
-			'is_action' => true,
 		]);
 		
 		return $returnvalue;

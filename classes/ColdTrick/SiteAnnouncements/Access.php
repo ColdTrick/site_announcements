@@ -15,26 +15,22 @@ class Access {
 	 * @return array
 	 */
 	public static function userWriteCollections($hook, $type, $returnvalue, $params) {
-		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
-		}
-		
+
 		$input_params = elgg_extract('input_params', $params);
 		if (empty($input_params) || !is_array($input_params)) {
-			return $returnvalue;
+			return;
 		}
 		
 		$type = elgg_extract('entity_type', $input_params);
 		$subtype = elgg_extract('entity_subtype', $input_params);
-		if (($type !== 'object') || ($subtype !== SITE_ANNOUNCEMENT_SUBTYPE)) {
-			return $returnvalue;
+		if (($type !== 'object') || ($subtype !== SiteAnnouncement::SUBTYPE)) {
+			return;
 		}
 		
-		$allowed_values = array(
+		$allowed_values = [
 			ACCESS_LOGGED_IN,
-			ACCESS_PUBLIC
-		);
+			ACCESS_PUBLIC,
+		];
 		foreach ($returnvalue as $index => $value) {
 			if (!in_array($index, $allowed_values)) {
 				unset($returnvalue[$index]);
@@ -55,32 +51,26 @@ class Access {
 	 * @return bool
 	 */
 	public static function containerPermissionsCheck($hook, $type, $returnvalue, $params) {
-		
 		if ($returnvalue) {
 			// already allowed
-			return $returnvalue;
-		}
-		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
+			return;
 		}
 		
 		$user = elgg_extract('user', $params);
+		if (!$user instanceof \ElggUser) {
+			return;
+		}
+		
 		$subtype = elgg_extract('subtype', $params);
-		
-		if (!($user instanceof \ElggUser)) {
-			return $returnvalue;
+		if ($subtype !== SiteAnnouncement::SUBTYPE) {
+			return;
 		}
 		
-		if (empty($subtype) || ($subtype !== SITE_ANNOUNCEMENT_SUBTYPE)) {
-			return $returnvalue;
+		if (!Gatekeeper::isEditor($user)) {
+			return;
 		}
 		
-		if (site_announcements_is_editor($user)) {
-			return true;
-		}
-		
-		return $returnvalue;
+		return true;
 	}
 	
 	/**
@@ -97,29 +87,24 @@ class Access {
 		
 		if ($returnvalue) {
 			// already allowed
-			return $returnvalue;
-		}
-		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
+			return;
 		}
 		
 		$user = elgg_extract('user', $params);
+		if (!$user instanceof \ElggUser) {
+			return;
+		}
+		
 		$entity = elgg_extract('entity', $params);
-		
-		if (!($user instanceof \ElggUser)) {
-			return $returnvalue;
+		if (!$entity instanceof SiteAnnouncement) {
+			return;
 		}
 		
-		if (empty($entity) || !elgg_instanceof($entity, 'object', SITE_ANNOUNCEMENT_SUBTYPE)) {
-			return $returnvalue;
+		if (!Gatekeeper::isEditor($user)) {
+			return;
 		}
 		
-		if (site_announcements_is_editor($user)) {
-			return true;
-		}
-		
-		return $returnvalue;
+		return true;
 	}
 	
 	/**
@@ -133,15 +118,9 @@ class Access {
 	 * @return bool
 	 */
 	public static function commentPermissionsCheck($hook, $type, $returnvalue, $params) {
-		
-		if (empty($params) || !is_array($params)) {
-			return $returnvalue;
-		}
-		
 		$entity = elgg_extract('entity', $params);
-		
-		if (empty($entity) || !elgg_instanceof($entity, 'object', SITE_ANNOUNCEMENT_SUBTYPE)) {
-			return $returnvalue;
+		if (!$entity instanceof SiteAnnouncement) {
+			return;
 		}
 		
 		return false;

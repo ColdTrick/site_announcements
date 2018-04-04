@@ -3,35 +3,35 @@
 return [
 	'item:object:site_announcement' => "Seiten-Ankündigungen",
 	
-	'site_annoucements' => "Ankündigungen",
-	'site_annoucements:archive' => "Archiv",
-	'site_annoucements:scheduled' => "Geplant",
-	'site_annoucements:editors' => "Ankündiger",
+	'site_announcements' => "Ankündigungen",
+	'site_announcements:archive' => "Archiv",
+	'site_announcements:scheduled' => "Geplant",
+	'site_announcements:editors' => "Ankündiger",
 	'announcements:add' => "Ankündigung hinzufügen",
 
 	// plugin settings
 	'site_announcements:settings:archive_cleanup' => "Entferne abgelaufene Ankündigungen nach einer Anzahl von Tagen",
 	'site_announcements:settings:archive_cleanup:help' => "Wenn Du nicht möchtest, dass das Archiv zu groß wird kannst Du hier die Anzahl der Tage angeben, nach denen abgelaufene Ankündigungen gelöscht werden. Keine Angabe oder 0 unterbindet das Löschen.",
 	
-	'site_annoucements:all:title' => "Aktive Ankündigungen",
-	'site_annoucements:archive:title' => "Ankündigungsarchiv",
-	'site_annoucements:add:title' => "Ankündigung hinzufügen",
-	'site_annoucements:edit:title' => "Ankündigung bearbeiten",
-	'site_annoucements:scheduled:title' => "Geplante Ankündigungen",
-	'site_annoucements:editors:title' => "Ankündiger",
+	'site_announcements:all:title' => "Aktive Ankündigungen",
+	'site_announcements:archive:title' => "Ankündigungsarchiv",
+	'site_announcements:add:title' => "Ankündigung hinzufügen",
+	'site_announcements:edit:title' => "Ankündigung bearbeiten",
+	'site_announcements:scheduled:title' => "Geplante Ankündigungen",
+	'site_announcements:editors:title' => "Ankündiger",
 	
-	'site_annoucements:filter:active' => "Aktiv",
-	'site_annoucements:filter:archive' => "Archiv",
-	'site_annoucements:filter:scheduled' => "Geplant",
-	'site_annoucements:filter:editors' => "Ankündiger",
+	'site_announcements:filter:active' => "Aktiv",
+	'site_announcements:filter:archive' => "Archiv",
+	'site_announcements:filter:scheduled' => "Geplant",
+	'site_announcements:filter:editors' => "Ankündiger",
 	
 	'site_announcements:user_hover:make_editor' => "Ankündiger erstellen",
 	'site_announcements:user_hover:remove_editor' => "Ankündiger entfernen",
 	
-	'site_annoucements:all:none' => "Keine aktiven Ankündigungen",
-	'site_annoucements:archive:none' => "Keine archivierten Ankündigungen",
-	'site_annoucements:scheduled:none' => "Keine geplanten Ankündigungen",
-	'site_annoucements:editors:none' => "Keine Ankündiger",
+	'site_announcements:all:none' => "Keine aktiven Ankündigungen",
+	'site_announcements:archive:none' => "Keine archivierten Ankündigungen",
+	'site_announcements:scheduled:none' => "Keine geplanten Ankündigungen",
+	'site_announcements:editors:none' => "Keine Ankündiger",
 	
 	'site_announcements:menu:entity:mark' => "Habe ich schon gesehen.",
 	
