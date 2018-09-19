@@ -22,6 +22,7 @@ class FilterMenu {
 			'href' => 'announcements/all',
 			'priority' => 100,
 			'is_trusted' => true,
+			'selected' => elgg_extract('filter_value', $params) === 'all',
 		]);
 		
 		$returnvalue[] = \ElggMenuItem::factory([

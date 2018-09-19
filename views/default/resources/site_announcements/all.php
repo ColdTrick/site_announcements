@@ -43,6 +43,7 @@ $content = elgg_list_entities([
 $page_data = elgg_view_layout('default', [
 	'title' => $title,
 	'filter_id' => 'site_announcements',
+	'filter_value' => 'all',
 	'content' => $content,
 	'sidebar' => false,
 ]);
