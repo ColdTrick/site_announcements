@@ -6,15 +6,11 @@
  */
 
 $entity = elgg_extract('entity', $vars);
-$full_view = elgg_extract('full_view', $vars, false);
-
 if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
 	return;
 }
 
-$entity_icon = elgg_view_entity_icon($entity, 'topbar');
-
-if ($full_view) {
+if (elgg_extract('full_view', $vars, false)) {
 	
 	$content = elgg_view('output/longtext', ['value' => $entity->description]);
 	
