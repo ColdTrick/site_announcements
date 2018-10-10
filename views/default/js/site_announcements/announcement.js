@@ -8,12 +8,15 @@ define(function(require) {
 		var guid = $(this).attr('rel');
 		var ajax = new Ajax(false);
 		
+		$message = $(this).closest('.elgg-message');
+		$message.slideToggle();
+		
 		ajax.action($(this).attr('href'), {
 			success: function() {
-				$('#site-announcements-site #elgg-object-' + guid).remove();
+				$message.remove();
 			}
 		});
 	};
 	
-	$(document).on('click', '#site-announcements-site li.elgg-menu-item-mark a', mark_as_read);
+	$(document).on('click', '.site-announcements-mark', mark_as_read);
 });

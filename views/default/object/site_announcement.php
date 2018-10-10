@@ -35,6 +35,15 @@ if (elgg_extract('full_view', $vars, false)) {
 	}
 	//error, success, warning, help, notice
 	
+	$mark = elgg_view('output/url', [
+		'icon' => 'delete',
+		'text' => false,
+		'class' => 'site-announcements-mark',
+		'title' => elgg_echo('site_announcements:menu:entity:mark'),
+		'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
+	]);
+	$content = elgg_view_image_block('', $content, ['image_alt' => $mark]);
+	
 	echo elgg_view_message($message_type, $content, $message_options);
 } else {
 	
