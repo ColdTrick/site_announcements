@@ -14,7 +14,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		elgg_extend_view('elgg.js', 'js/site_announcements/user_hover.js');
 			
 		// extends views
-		elgg_extend_view('page/default', 'site_announcements/page_shell', 400);
+		elgg_extend_view('page/elements/body', 'site_announcements/site', 400);
 		
 		// register plugin hooks
 		elgg_register_plugin_hook_handler('register', 'menu:filter:site_announcements', '\ColdTrick\SiteAnnouncements\FilterMenu::register');
