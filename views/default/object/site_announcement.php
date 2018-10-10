@@ -5,26 +5,23 @@
  * @uses $vars['entity'] the entity to show
  */
 
-$entity = elgg_extract("entity", $vars);
-$full_view = elgg_extract("full_view", $vars, false);
+$entity = elgg_extract('entity', $vars);
+$full_view = elgg_extract('full_view', $vars, false);
 
 if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
 	return;
 }
 
-$entity_icon = elgg_view_entity_icon($entity, "topbar");
+$entity_icon = elgg_view_entity_icon($entity, 'topbar');
 
 if ($full_view) {
 	
-	$content = elgg_view("output/longtext", ["value" => $entity->description]);
+	$content = elgg_view('output/longtext', ['value' => $entity->description]);
 	
-	$announcement_type = $entity->announcement_type;
-	if (empty($announcement_type)) {
-		$announcement_type = 'hand-point-right';
-	}
-	
+	$announcement_type = $entity->announcement_type ?: 'hand-point-right';
+		
 	$message_options = [
-		'icon' => $announcement_type,
+		'icon' => $entity->getMessageTypeIconName(),
 		'class' => " site-announcement-" . $announcement_type
 	];
 	
@@ -44,17 +41,31 @@ if ($full_view) {
 	
 	echo elgg_view_message($message_type, $content, $message_options);
 } else {
-	// listing
-	$subtitle = "<strong>" . elgg_echo("site_announcements:edit:startdate") . "</strong>: " . date(elgg_echo("friendlytime:date_format"), $entity->startdate);
-	$subtitle .= " <strong>" . elgg_echo("site_announcements:edit:enddate") . "</strong>: " . date(elgg_echo("friendlytime:date_format"), $entity->enddate);
 	
-	$params = array(
-		"entity" => $entity,
-		"subtitle" => $subtitle,
-		"content" => $entity->description,
-	);
+	$imprint = [
+		[
+			'icon_name' => $entity->getMessageTypeIconName(),
+			'content' => $entity->getMessageTypeLabel(),
+		],
+		[
+			'icon_name' => 'calendar-alt-regular',
+			'content' => '<strong>' . elgg_echo('site_announcements:edit:startdate') . '</strong>: ' . date(elgg_echo('friendlytime:date_format'), $entity->startdate),
+		],
+		[
+			'icon_name' => 'calendar-times-regular',
+			'content' => '<strong>' . elgg_echo('site_announcements:edit:enddate') . '</strong>: ' . date(elgg_echo('friendlytime:date_format'), $entity->enddate),
+		],
+	];
+	
+	$params = [
+		'entity' => $entity,
+		'icon' => false,
+		'content' => $entity->description,
+		'access' => false,
+		'byline' => false,
+		'time' => false,
+		'imprint' => $imprint,
+	];
 	$params = $params + $vars;
-	$list_body = elgg_view("object/elements/summary", $params);
-
-	echo elgg_view_image_block($entity_icon, $list_body);
+	echo elgg_view('object/elements/summary', $params);
 }
