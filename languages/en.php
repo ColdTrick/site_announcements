@@ -2,6 +2,7 @@
 
 return [
 	'item:object:site_announcement' => "Site announcement",
+	'collection:object:site_announcement' => "Site announcements",
 	
 	'site_announcements' => "Announcements",
 	'site_announcements:archive' => "Archive",
