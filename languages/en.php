@@ -8,7 +8,6 @@ return [
 	'site_announcements:archive' => "Archive",
 	'site_announcements:scheduled' => "Scheduled",
 	'site_announcements:editors' => "Announcers",
-	'announcements:add' => "Add announcement",
 
 	// plugin settings
 	'site_announcements:settings:archive_cleanup' => "Delete expired announcements after a number of days",
