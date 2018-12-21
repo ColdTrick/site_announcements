@@ -1,17 +1,17 @@
 <?php
 /**
- * This file was created by Translation Editor v5.2
- * On 2017-02-01 16:17
+ * This file was created by Translation Editor v7.0-beta
+ * On 2018-12-21 14:27
  */
 
 return array (
+  'collection:object:site_announcement' => 'Aankondigingen',
   'site_announcements:settings:archive_cleanup' => 'Verwijder verlopen aankondigingen na een aantal dagen',
   'site_announcements:settings:archive_cleanup:help' => 'Indien het archief niet te groot mag worden, kun je een aantal dagen opgeven waarna een verlopen aankondiging zal worden verwijderd. 0 of leeg om geen aankondigingen te verwijderen.',
   'site_announcements' => 'Aankondigingen',
   'site_announcements:archive' => 'Archief',
   'site_announcements:scheduled' => 'Ingepland',
   'site_announcements:editors' => 'Berichtgevers',
-  'announcements:add' => 'Nieuwe aankondiging',
   'site_announcements:all:title' => 'Actieve aankondigingen',
   'site_announcements:archive:title' => 'Aankondigingen archief',
   'site_announcements:add:title' => 'Nieuwe aankondiging',
