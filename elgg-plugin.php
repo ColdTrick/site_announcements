@@ -20,13 +20,6 @@ return [
 	],
 	
 	'routes' => [
-		'action:site_announcements:delete' => [
-			'path' => '/action/announcements/delete',
-			'file' => __DIR__ . '/actions/site_announcements/delete.php',
-			'middleware' => [
-				Gatekeeper::class,
-			]
-		],
 		'action:site_announcements:edit' => [
 			'path' => '/action/site_announcements/edit',
 			'file' => __DIR__ . '/actions/site_announcements/edit.php',
