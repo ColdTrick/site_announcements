@@ -6,12 +6,12 @@
 $guid = (int) get_input("guid");
 
 if (empty($guid)) {
-	return elgg_error_response(elgg_echo('InvalidParameterException:MissingParameter'));
+	return elgg_error_response(elgg_echo('error:missing_data'));
 }
 
 $entity = get_entity($guid);
 if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
-	return elgg_error_response(elgg_echo('InvalidParameterException:NoEntityFound'));
+	return elgg_error_response(elgg_echo('error:missing_data'));
 }
 
 if (elgg_is_logged_in()) {
