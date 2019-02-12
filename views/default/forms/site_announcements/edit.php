@@ -5,6 +5,8 @@
  * @uses $vars['entity'] for the edit of an existing announcement
  */
 
+use Elgg\Values;
+
 $entity = elgg_extract('entity', $vars);
 
 $hour_options = range(0, 23);
@@ -32,11 +34,14 @@ if (!empty($entity)) {
 	$access_id = elgg_get_sticky_value('site_announcement_edit', 'access_id', get_default_access());
 }
 
-$starthour = (int) elgg_get_sticky_value('site_announcement_edit', 'starthour', date('G', $startdate));
-$startmins = (int) elgg_get_sticky_value('site_announcement_edit', 'startmins', date('i', $startdate));
+$startdate = Values::normalizeTime($startdate);
+$enddate = Values::normalizeTime($enddate);
 
-$endhour = (int) elgg_get_sticky_value('site_announcement_edit', 'endhour', date('G', $enddate));
-$endmins = (int) elgg_get_sticky_value('site_announcement_edit', 'endmins', date('i', $enddate));
+$starthour = (int) elgg_get_sticky_value('site_announcement_edit', 'starthour', $startdate->format('G'));
+$startmins = (int) elgg_get_sticky_value('site_announcement_edit', 'startmins', $startdate->format('i'));
+
+$endhour = (int) elgg_get_sticky_value('site_announcement_edit', 'endhour', $enddate->format('G'));
+$endmins = (int) elgg_get_sticky_value('site_announcement_edit', 'endmins', $enddate->format('i'));
 
 // clear sticky form
 elgg_clear_sticky_form('site_announcement_edit');

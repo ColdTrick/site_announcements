@@ -46,19 +46,24 @@ if (elgg_extract('full_view', $vars, false)) {
 	
 	echo elgg_view_message($message_type, $content, $message_options);
 } else {
-	
 	$imprint = [
-		[
+		'announcement_type' => [
 			'icon_name' => $entity->getMessageTypeIconName(),
 			'content' => $entity->getMessageTypeLabel(),
 		],
-		[
+		'startdate' => [
 			'icon_name' => 'calendar-alt-regular',
-			'content' => '<strong>' . elgg_echo('site_announcements:edit:startdate') . '</strong>: ' . date(elgg_echo('friendlytime:date_format'), $entity->startdate),
+			'content' => elgg_echo('site_announcements:edit:startdate') . ': ' . elgg_view('output/date', [
+				'value' => $entity->startdate,
+				'format' => elgg_echo('friendlytime:date_format'),
+			]),
 		],
-		[
+		'enddate' => [
 			'icon_name' => 'calendar-times-regular',
-			'content' => '<strong>' . elgg_echo('site_announcements:edit:enddate') . '</strong>: ' . date(elgg_echo('friendlytime:date_format'), $entity->enddate),
+			'content' => elgg_echo('site_announcements:edit:enddate') . ': ' . elgg_view('output/date', [
+				'value' => $entity->enddate,
+				'format' => elgg_echo('friendlytime:date_format'),
+			]),
 		],
 	];
 	

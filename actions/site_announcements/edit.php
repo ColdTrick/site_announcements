@@ -3,6 +3,8 @@
  * save a site announcement
  */
 
+use Elgg\Values;
+
 elgg_make_sticky_form('site_announcement_edit');
 
 $guid = (int) get_input('guid');
@@ -19,8 +21,11 @@ $enddate = (int) get_input('enddate');
 $endhour = (int) get_input('endhour');
 $endmins = (int) get_input('endmins');
 
-$realstartdate = mktime($starthour, $startmins, 0, date('n', $startdate), date('j', $startdate), date('Y', $startdate));
-$realenddate = mktime($endhour, $endmins, 0, date('n', $enddate), date('j', $enddate), date('Y', $enddate));
+$realstartdate = Values::normalizeTime($startdate);
+$realstartdate->setTime($starthour, $startmins, 0);
+
+$realenddate = Values::normalizeTime($enddate);
+$realenddate->setTime($endhour, $endmins, 0);
 
 if (empty($description) || empty($realstartdate) || empty($realenddate)) {
 	return elgg_error_response(elgg_echo('site_announcement:action:edit:error:input'));
@@ -49,8 +54,8 @@ $entity->access_id = $access_id;
 
 $entity->save();
 
-$entity->startdate = $realstartdate;
-$entity->enddate = $realenddate;
+$entity->startdate = $realstartdate->getTimestamp();
+$entity->enddate = $realenddate->getTimestamp();
 $entity->announcement_type = $announcement_type;
 
 if (!$entity->save()) {

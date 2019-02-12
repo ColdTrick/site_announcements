@@ -1,11 +1,10 @@
 <?php
-
-use Elgg\Database\QueryBuilder;
-use Elgg\Database\Clauses\WhereClause;
-
 /**
  * Prepend of page/elements/body to show the current site announcements
  */
+
+use Elgg\Database\QueryBuilder;
+use Elgg\Database\Clauses\WhereClause;
 
 $options = [
 	'type' => 'object',
