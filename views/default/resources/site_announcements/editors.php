@@ -8,7 +8,7 @@ elgg_push_breadcrumb(elgg_echo('site_announcements'), 'announcements/all');
 elgg_push_breadcrumb(elgg_echo('site_announcements:editors'));
 
 // add button
-elgg_register_title_button();
+elgg_register_title_button('announcements', 'add', 'object', \SiteAnnouncement::SUBTYPE);
 
 // build page elements
 $title = elgg_echo('site_announcements:editors:title');
@@ -17,7 +17,6 @@ $title = elgg_echo('site_announcements:editors:title');
 $content = elgg_list_entities([
 	'type' => 'user',
 	'metadata_name_value_pair' => ['admin' => 'yes'],
-
 	'limit' => false,
 	'no_results' => elgg_echo('site_announcements:editors:none'),
 ]);

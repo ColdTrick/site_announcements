@@ -8,7 +8,7 @@ use Elgg\Database\Clauses\WhereClause;
 
 $options = [
 	'type' => 'object',
-	'subtype' => \ColdTrick\SiteAnnouncements\SiteAnnouncement::SUBTYPE,
+	'subtype' => \SiteAnnouncement::SUBTYPE,
 	'limit' => false,
 	'metadata_name_value_pairs' => [
 		[
@@ -39,7 +39,7 @@ if (elgg_is_logged_in()) {
 		$subquery = $qb->subquery('entity_relationships', 'rc');
 		$subquery->select('guid_two')
 			->where($qb->compare('rc.guid_one', '=', $user_guid, ELGG_VALUE_INTEGER))
-			->andWhere($qb->compare('rc.relationship', '=', \ColdTrick\SiteAnnouncements\SiteAnnouncement::READ_RELATIONSHIP, ELGG_VALUE_STRING));
+			->andWhere($qb->compare('rc.relationship', '=', \SiteAnnouncement::READ_RELATIONSHIP, ELGG_VALUE_STRING));
 
 		return $qb->compare("{$main_alias}.guid", "NOT IN", $subquery->getSQL());
 	};

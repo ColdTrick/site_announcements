@@ -89,7 +89,7 @@ echo elgg_view_field([
 	'name' => 'access_id',
 	'value' => $access_id,
 	'entity_type' => 'object',
-	'entity_subtype' => \ColdTrick\SiteAnnouncements\SiteAnnouncement::SUBTYPE,
+	'entity_subtype' => \SiteAnnouncement::SUBTYPE,
 	'entity' => $entity,
 ]);
 

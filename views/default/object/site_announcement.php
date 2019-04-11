@@ -6,7 +6,7 @@
  */
 
 $entity = elgg_extract('entity', $vars);
-if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
+if (!$entity instanceof \SiteAnnouncement) {
 	return;
 }
 

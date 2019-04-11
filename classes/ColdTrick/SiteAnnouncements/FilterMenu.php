@@ -19,7 +19,7 @@ class FilterMenu {
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'all',
 			'text' => elgg_echo('site_announcements:filter:active'),
-			'href' => 'announcements/all',
+			'href' => elgg_generate_url('collection:object:site_announcement:all'),
 			'priority' => 100,
 			'is_trusted' => true,
 			'selected' => elgg_extract('filter_value', $params) === 'all',
@@ -28,7 +28,7 @@ class FilterMenu {
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'archive',
 			'text' => elgg_echo('site_announcements:filter:archive'),
-			'href' => 'announcements/archive',
+			'href' => elgg_generate_url('collection:object:site_announcement:archive'),
 			'priority' => 200,
 			'is_trusted' => true,
 		]);
@@ -37,7 +37,7 @@ class FilterMenu {
 			$returnvalue[] = \ElggMenuItem::factory([
 				'name' => 'scheduled',
 				'text' => elgg_echo('site_announcements:filter:scheduled'),
-				'href' => 'announcements/scheduled',
+				'href' => elgg_generate_url('collection:object:site_announcement:scheduled'),
 				'priority' => 300,
 				'is_trusted' => true,
 			]);
@@ -45,7 +45,7 @@ class FilterMenu {
 			$returnvalue[] = \ElggMenuItem::factory([
 				'name' => 'editors',
 				'text' => elgg_echo('site_announcements:filter:editors'),
-				'href' => 'announcements/editors',
+				'href' => elgg_generate_url('collection:object:site_announcement:editors'),
 				'priority' => 400,
 				'is_trusted' => true,
 			]);

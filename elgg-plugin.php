@@ -1,13 +1,7 @@
 <?php
 
 use ColdTrick\SiteAnnouncements\Bootstrap;
-use ColdTrick\SiteAnnouncements\SiteAnnouncement;
 use ColdTrick\SiteAnnouncements\Gatekeeper;
-
-$composer_path = '';
-if (is_dir(__DIR__ . '/vendor')) {
-	$composer_path = __DIR__ . '/';
-}
 
 return [
 	'bootstrap' => Bootstrap::class,
@@ -15,10 +9,9 @@ return [
 		[
 			'type' => 'object',
 			'subtype' => 'site_announcement',
-			'class' => SiteAnnouncement::class,
+			'class' => \SiteAnnouncement::class,
 		],
 	],
-	
 	'routes' => [
 		'action:site_announcements:edit' => [
 			'path' => '/action/site_announcements/edit',

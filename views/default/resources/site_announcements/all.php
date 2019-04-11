@@ -1,16 +1,16 @@
 <?php
-use ColdTrick\SiteAnnouncements\Gatekeeper;
-
 /**
  * List all currently active announcements
  */
+
+use ColdTrick\SiteAnnouncements\Gatekeeper;
 
 // breadcrumb
 elgg_push_breadcrumb(elgg_echo('site_announcements'));
 
 // add button
 if (Gatekeeper::isEditor()) {
-	elgg_register_title_button();
+	elgg_register_title_button('announcements', 'add', 'object', \SiteAnnouncement::SUBTYPE);
 }
 
 // build page elements
@@ -18,7 +18,7 @@ $title = elgg_echo('site_announcements:all:title');
 
 $content = elgg_list_entities([
 	'type' => 'object',
-	'subtype' => \ColdTrick\SiteAnnouncements\SiteAnnouncement::SUBTYPE,
+	'subtype' => \SiteAnnouncement::SUBTYPE,
 	'order_by_metadata' => [
 		'name' => 'startdate',
 		'as' => 'integer',

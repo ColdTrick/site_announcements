@@ -10,7 +10,7 @@ class Cron {
 	 * @param string $hook         the name of the hook
 	 * @param string $type         the type of the hook
 	 * @param mixed  $return_value current return value
-	 * @param arary  $params       supplied params
+	 * @param array  $params       supplied params
 	 *
 	 * @return void
 	 */
@@ -28,13 +28,12 @@ class Cron {
 		
 		$options = [
 			'type' => 'object',
-			'subtype' => SiteAnnouncement::SUBTYPE,
+			'subtype' => \SiteAnnouncement::SUBTYPE,
 			'limit' => false,
 			'metadata_name_value_pairs' => [
 				'name' => 'enddate',
 				'value' => $time - ($archive_cleanup * 24 * 60 * 60),
 				'operand' => '<',
-				
 			],
 		];
 		

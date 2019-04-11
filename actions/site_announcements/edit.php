@@ -37,11 +37,11 @@ if ($realenddate <= $realstartdate) {
 
 if (!empty($guid)) {
 	$entity = get_entity($guid);
-	if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
+	if (!$entity instanceof \SiteAnnouncement) {
 		return elgg_error_response(elgg_echo('noaccess'));
 	}
 } else {
-	$entity = new \ColdTrick\SiteAnnouncements\SiteAnnouncement();
+	$entity = new \SiteAnnouncement();
 	$entity->access_id = $access_id;
 				
 	if (!$entity->save()) {

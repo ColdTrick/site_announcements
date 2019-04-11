@@ -10,7 +10,7 @@ if (empty($guid)) {
 }
 
 $entity = get_entity($guid);
-if (!$entity instanceof \ColdTrick\SiteAnnouncements\SiteAnnouncement) {
+if (!$entity instanceof \SiteAnnouncement) {
 	return elgg_error_response(elgg_echo('error:missing_data'));
 }
 

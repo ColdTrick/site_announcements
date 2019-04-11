@@ -23,7 +23,7 @@ class Access {
 		
 		$type = elgg_extract('entity_type', $input_params);
 		$subtype = elgg_extract('entity_subtype', $input_params);
-		if (($type !== 'object') || ($subtype !== SiteAnnouncement::SUBTYPE)) {
+		if (($type !== 'object') || ($subtype !== \SiteAnnouncement::SUBTYPE)) {
 			return;
 		}
 		
@@ -62,7 +62,7 @@ class Access {
 		}
 		
 		$subtype = elgg_extract('subtype', $params);
-		if ($subtype !== SiteAnnouncement::SUBTYPE) {
+		if ($subtype !== \SiteAnnouncement::SUBTYPE) {
 			return;
 		}
 		
@@ -96,7 +96,7 @@ class Access {
 		}
 		
 		$entity = elgg_extract('entity', $params);
-		if (!$entity instanceof SiteAnnouncement) {
+		if (!$entity instanceof \SiteAnnouncement) {
 			return;
 		}
 		
@@ -119,7 +119,7 @@ class Access {
 	 */
 	public static function commentPermissionsCheck($hook, $type, $returnvalue, $params) {
 		$entity = elgg_extract('entity', $params);
-		if (!$entity instanceof SiteAnnouncement) {
+		if (!$entity instanceof \SiteAnnouncement) {
 			return;
 		}
 		
