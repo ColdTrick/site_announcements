@@ -2,6 +2,7 @@
 
 return [
 	'item:object:site_announcement' => "Site announcement",
+	'entity:delete:object:site_announcement:success' => "The site announcement was removed",
 	'collection:object:site_announcement' => "Site announcements",
 	
 	'site_announcements' => "Announcements",

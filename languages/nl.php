@@ -5,6 +5,7 @@
  */
 
 return array (
+  'entity:delete:object:site_announcement:success' => "De aankondiging is verwijderd",
   'collection:object:site_announcement' => 'Aankondigingen',
   'site_announcements:settings:archive_cleanup' => 'Verwijder verlopen aankondigingen na een aantal dagen',
   'site_announcements:settings:archive_cleanup:help' => 'Indien het archief niet te groot mag worden, kun je een aantal dagen opgeven waarna een verlopen aankondiging zal worden verwijderd. 0 of leeg om geen aankondigingen te verwijderen.',
