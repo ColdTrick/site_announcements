@@ -10,14 +10,14 @@ if (empty($user)) {
 }
 
 if ($user->isAdmin()) {
-	return elgg_error_response(elgg_echo('site_announcements:action:toggle_editor:error:is_admin', [$user->name]));
+	return elgg_error_response(elgg_echo('site_announcements:action:toggle_editor:error:is_admin', [$user->getDisplayName()]));
 }
 
 if (Gatekeeper::isEditor($user)) {
 	elgg_unset_plugin_user_setting('editor', $user->guid, 'site_announcements');
-	return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:unmake', [$user->name]));
+	return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:unmake', [$user->getDisplayName()]));
 }
 
 elgg_set_plugin_user_setting('editor', time(), $user->guid, 'site_announcements');
 
-return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:make', [$user->name]));
+return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:make', [$user->getDisplayName()]));

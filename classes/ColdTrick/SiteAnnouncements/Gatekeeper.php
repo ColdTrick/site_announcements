@@ -13,7 +13,7 @@ class Gatekeeper {
 	 * @param Request $request Request
 	 *
 	 * @return void
-	 * @throws HttpException
+	 * @throws GatekeeperException
 	 */
 	public function __invoke(Request $request) {
 		$request->elgg()->gatekeeper->assertAuthenticatedUser();
@@ -26,13 +26,13 @@ class Gatekeeper {
 	/**
 	 * Check if a user is an editor
 	 *
-	 * @param ElggUser $user (optional) the user to check, defaults to loggedin user
+	 * @param \ElggUser $user (optional) the user to check, defaults to loggedin user
 	 *
 	 * @return bool
 	 */
 	public static function isEditor(\ElggUser $user = null) {
 		
-		if (!$user instanceof ElggUser) {
+		if (!$user instanceof \ElggUser) {
 			$user = elgg_get_logged_in_user_entity();
 		}
 		
