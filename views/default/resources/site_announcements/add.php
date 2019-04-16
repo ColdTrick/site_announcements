@@ -4,7 +4,7 @@
  */
 
 // breadcrumb
-elgg_push_breadcrumb(elgg_echo('site_announcements'), 'announcements/all');
+elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
 elgg_push_breadcrumb(elgg_echo('add'));
 
 // build page elements
