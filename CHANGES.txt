@@ -1,6 +1,18 @@
 Version history
 ===============
 
+6.0 (2019-04-17):
+
+- added: German translations
+- added: Spanish translation
+- changed: Elgg version requirement changed to v3.0
+- changed: no longer extend page/elements/body via page/shell
+- changed: type icon is now added as an informational element in imprint
+- changed: updates for Elgg 3
+- fixed: correctly set all as selected filter tab
+- fixed: editor listing
+- removed: custom delete action
+
 5.0.3 (2017-09-06):
 
 - several small chores/fixes
