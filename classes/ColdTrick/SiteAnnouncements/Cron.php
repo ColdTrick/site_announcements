@@ -7,14 +7,11 @@ class Cron {
 	/**
 	 * Cleanup expired announcements
 	 *
-	 * @param string $hook         the name of the hook
-	 * @param string $type         the type of the hook
-	 * @param mixed  $return_value current return value
-	 * @param array  $params       supplied params
+	 * @param \Elgg\Hook $hook 'cron', 'daily'
 	 *
 	 * @return void
 	 */
-	public static function cleanupExpiredAnnouncements($hook, $type, $return_value, $params) {
+	public static function cleanupExpiredAnnouncements(\Elgg\Hook $hook) {
 		
 		$archive_cleanup = (int) elgg_get_plugin_setting('archive_cleanup', 'site_announcements');
 		if ($archive_cleanup < 1) {
@@ -24,7 +21,7 @@ class Cron {
 		echo 'Starting SiteAnnouncements cleanup' . PHP_EOL;
 		elgg_log('Starting SiteAnnouncements cleanup', 'NOTICE');
 		
-		$time = (int) elgg_extract('time', $params, time());
+		$time = (int) $hook->getParam('time', time());
 		
 		$options = [
 			'type' => 'object',

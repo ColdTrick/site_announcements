@@ -7,22 +7,20 @@ class FilterMenu {
 	/**
 	 * Change the filter menu items for site announcements
 	 *
-	 * @param string          $hook        the name of the hook
-	 * @param string          $type        the type of the hook
-	 * @param \ElggMenuItem[] $returnvalue current returnvalue
-	 * @param array           $params      supplied params
+	 * @param \Elgg\Hook $hook 'register', 'menu:filter:site_announcements'
 	 *
 	 * @return \ElggMenuItem[]
 	 */
-	public static function register($hook, $type, $returnvalue, $params) {
+	public static function register(\Elgg\Hook $hook) {
 		
+		$returnvalue = $hook->getValue();
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'all',
 			'text' => elgg_echo('site_announcements:filter:active'),
 			'href' => elgg_generate_url('collection:object:site_announcement:all'),
 			'priority' => 100,
 			'is_trusted' => true,
-			'selected' => elgg_extract('filter_value', $params) === 'all',
+			'selected' => $hook->getParam('filter_value') === 'all',
 		]);
 		
 		$returnvalue[] = \ElggMenuItem::factory([

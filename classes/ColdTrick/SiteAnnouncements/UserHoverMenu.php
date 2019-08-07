@@ -7,20 +7,17 @@ class UserHoverMenu {
 	/**
 	 * Add a menu item to the user hover menu
 	 *
-	 * @param string          $hook        the name of the hook
-	 * @param string          $type        the type of the hook
-	 * @param \ElggMenuItem[] $returnvalue current returnvalue
-	 * @param array           $params      supplied params
+	 * @param \Elgg\Hook $hook 'register', 'menu:user_hover'
 	 *
 	 * @return void|\ElggMenuItem[]
 	 */
-	public static function register($hook, $type, $returnvalue, $params) {
+	public static function register(\Elgg\Hook $hook) {
 		
 		if (!elgg_is_admin_logged_in()) {
 			return;
 		}
 		
-		$entity = elgg_extract('entity', $params);
+		$entity = $hook->getEntityParam();
 		if (!$entity instanceof \ElggUser) {
 			return ;
 		}
@@ -32,6 +29,7 @@ class UserHoverMenu {
 		
 		$is_editor = Gatekeeper::isEditor($entity);
 		
+		$returnvalue = $hook->getValue();
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'announcement_make_editor',
 			'text' => elgg_echo('site_announcements:user_hover:make_editor'),

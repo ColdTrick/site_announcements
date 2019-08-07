@@ -7,16 +7,13 @@ class Access {
 	/**
 	 * Change the access options for site announcements
 	 *
-	 * @param string $hook        the name of the hook
-	 * @param string $type        the type of the hook
-	 * @param array  $returnvalue current returnvalue
-	 * @param array  $params      supplied params
+	 * @param \Elgg\Hook $hook 'access:collections:write', 'user'
 	 *
 	 * @return array
 	 */
-	public static function userWriteCollections($hook, $type, $returnvalue, $params) {
+	public static function userWriteCollections(\Elgg\Hook $hook) {
 
-		$input_params = elgg_extract('input_params', $params);
+		$input_params = $hook->getParam('input_params');
 		if (empty($input_params) || !is_array($input_params)) {
 			return;
 		}
@@ -31,6 +28,8 @@ class Access {
 			ACCESS_LOGGED_IN,
 			ACCESS_PUBLIC,
 		];
+		
+		$returnvalue = $hook->getValue();
 		foreach ($returnvalue as $index => $value) {
 			if (!in_array($index, $allowed_values)) {
 				unset($returnvalue[$index]);
@@ -43,25 +42,22 @@ class Access {
 	/**
 	 * Check the container write permissions
 	 *
-	 * @param string $hook        the name of the hook
-	 * @param string $type        the type of the hook
-	 * @param array  $returnvalue current returnvalue
-	 * @param array  $params      supplied params
+	 * @param \Elgg\Hook $hook 'container_permissions_check', 'object'
 	 *
 	 * @return bool
 	 */
-	public static function containerPermissionsCheck($hook, $type, $returnvalue, $params) {
-		if ($returnvalue) {
+	public static function containerPermissionsCheck(\Elgg\Hook $hook) {
+		if ($hook->getValue()) {
 			// already allowed
 			return;
 		}
 		
-		$user = elgg_extract('user', $params);
+		$user = $hook->getUserParam();
 		if (!$user instanceof \ElggUser) {
 			return;
 		}
 		
-		$subtype = elgg_extract('subtype', $params);
+		$subtype = $hook->getParam('subtype');
 		if ($subtype !== \SiteAnnouncement::SUBTYPE) {
 			return;
 		}
@@ -76,26 +72,23 @@ class Access {
 	/**
 	 * Check the write permissions
 	 *
-	 * @param string $hook        the name of the hook
-	 * @param string $type        the type of the hook
-	 * @param array  $returnvalue current returnvalue
-	 * @param array  $params      supplied params
+	 * @param \Elgg\Hook $hook 'permissions_check', 'object'
 	 *
 	 * @return bool
 	 */
-	public static function permissionsCheck($hook, $type, $returnvalue, $params) {
+	public static function permissionsCheck(\Elgg\Hook $hook) {
 		
-		if ($returnvalue) {
+		if ($hook->getValue()) {
 			// already allowed
 			return;
 		}
 		
-		$user = elgg_extract('user', $params);
+		$user = $hook->getUserParam();
 		if (!$user instanceof \ElggUser) {
 			return;
 		}
 		
-		$entity = elgg_extract('entity', $params);
+		$entity = $hook->getEntityParam();
 		if (!$entity instanceof \SiteAnnouncement) {
 			return;
 		}
@@ -110,15 +103,12 @@ class Access {
 	/**
 	 * Check the can comment
 	 *
-	 * @param string $hook        the name of the hook
-	 * @param string $type        the type of the hook
-	 * @param array  $returnvalue current returnvalue
-	 * @param array  $params      supplied params
+	 * @param \Elgg\Hook $hook 'permissions_check:comment', 'object'
 	 *
 	 * @return bool
 	 */
-	public static function commentPermissionsCheck($hook, $type, $returnvalue, $params) {
-		$entity = elgg_extract('entity', $params);
+	public static function commentPermissionsCheck(\Elgg\Hook $hook) {
+		$entity = $hook->getEntityParam();
 		if (!$entity instanceof \SiteAnnouncement) {
 			return;
 		}
