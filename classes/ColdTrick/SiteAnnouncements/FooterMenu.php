@@ -18,6 +18,7 @@ class FooterMenu {
 			'text' => elgg_echo('site_announcements'),
 			'href' => 'announcements/all',
 			'is_trusted' => true,
+			'icon' => 'bullhorn',
 		]);
 		
 		return $returnvalue;
