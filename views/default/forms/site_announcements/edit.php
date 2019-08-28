@@ -80,6 +80,7 @@ echo elgg_view_field([
 		'' => elgg_echo('site_announcements:type:general'),
 		'info' => elgg_echo('site_announcements:type:info'),
 		'attention' => elgg_echo('site_announcements:type:attention'),
+		'error' => elgg_echo('site_announcements:type:error'),
 	],
 ]);
 

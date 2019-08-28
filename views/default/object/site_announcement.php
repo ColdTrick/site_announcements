@@ -14,16 +14,19 @@ if (elgg_extract('full_view', $vars, false)) {
 	
 	$content = elgg_view('output/longtext', ['value' => $entity->description]);
 	
-	$announcement_type = $entity->announcement_type ?: 'hand-point-right';
-		
+	$announcement_type = $entity->announcement_type;
+	
 	$message_options = [
 		'icon' => $entity->getMessageTypeIconName(),
 		'class' => " site-announcement-" . $announcement_type
 	];
 	
-	switch($announcement_type) {
+	switch ($announcement_type) {
 		case 'attention':
 			$message_type = 'warning';
+			break;
+		case 'error':
+			$message_type = 'error';
 			break;
 		case 'info':
 			$message_type = 'notice';
@@ -31,7 +34,7 @@ if (elgg_extract('full_view', $vars, false)) {
 		default:
 			$message_options['title'] = false;
 			$message_type = 'success';
-		
+			break;
 	}
 	//error, success, warning, help, notice
 	

@@ -40,6 +40,7 @@ return [
 	'site_announcements:type:general' => "General",
 	'site_announcements:type:info' => "Informational",
 	'site_announcements:type:attention' => "Warning",
+	'site_announcements:type:error' => "Error",
 	
 	'site_announcements:edit:text' => "Announcement",
 	'site_announcements:edit:startdate' => "Startdate",

@@ -2,6 +2,10 @@
 
 /**
  * SiteAnnouncement class
+ *
+ * @property int    startdate         UNIX timestamp of the start of the message
+ * @property int    enddate           UNIX timestamp of the end of the message
+ * @property string announcement_type type of the message
  */
 class SiteAnnouncement extends \ElggObject {
 
@@ -47,7 +51,16 @@ class SiteAnnouncement extends \ElggObject {
 	 * @return string
 	 */
 	public function getMessageTypeIconName() {
-		return $this->announcement_type ?: 'hand-point-right';
+		
+		switch ($this->announcement_type) {
+			case 'attention':
+			case 'info':
+				return $this->announcement_type;
+			case 'error':
+				return 'exclamation-circle';
+		}
+		
+		return 'hand-point-right';
 	}
 	
 	/**
@@ -59,5 +72,4 @@ class SiteAnnouncement extends \ElggObject {
 		$type = $this->announcement_type ?: 'general';
 		return elgg_echo("site_announcements:type:{$type}");
 	}
-
 }
