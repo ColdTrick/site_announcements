@@ -1,6 +1,10 @@
 Version history
 ===============
 
+6.2 (2019-09-04):
+
+- added: error announcement type
+
 6.1 (2019-08-22):
 
 - added: footer menu now has an icon
