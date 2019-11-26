@@ -36,7 +36,7 @@ class Cron {
 		
 		elgg_call(ELGG_IGNORE_ACCESS, function() use ($options) {
 			// cleanup
-			$batch = new \ElggBatch('elgg_get_entities_from_metadata', $options, 'elgg_batch_delete_callback', 25, false);
+			$batch = new \ElggBatch('elgg_get_entities', $options, 'elgg_batch_delete_callback', 25, false);
 		});
 		
 		echo 'Done with SiteAnnouncements cleanup' . PHP_EOL;
