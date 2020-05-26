@@ -1,6 +1,10 @@
 Version history
 ===============
 
+6.2.1 (2020-05-26):
+
+- fixed: replaced deprecated function call
+
 6.2 (2019-09-04):
 
 - added: error announcement type
