@@ -1,6 +1,4 @@
-define(function(require) {
-	var $ = require('jquery');
-	var Ajax = require('elgg/Ajax');
+define(['jquery', 'elgg/Ajax'], function($, Ajax) {
 	
 	var mark_as_read = function(event) {
 		event.preventDefault();

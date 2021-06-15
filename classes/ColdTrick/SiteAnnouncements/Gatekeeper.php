@@ -2,8 +2,8 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
-use Elgg\GatekeeperException;
 use Elgg\Request;
+use Elgg\Exceptions\Http\GatekeeperException;
 
 class Gatekeeper {
 	

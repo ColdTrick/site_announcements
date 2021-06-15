@@ -14,10 +14,11 @@ if ($user->isAdmin()) {
 }
 
 if (Gatekeeper::isEditor($user)) {
-	elgg_unset_plugin_user_setting('editor', $user->guid, 'site_announcements');
+	$user->removePluginSetting('site_announcements', 'editor');
+	
 	return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:unmake', [$user->getDisplayName()]));
 }
 
-elgg_set_plugin_user_setting('editor', time(), $user->guid, 'site_announcements');
+$user->setPluginSetting('site_announcements', 'editor', time());
 
 return elgg_ok_response('', elgg_echo('site_announcements:action:toggle_editor:make', [$user->getDisplayName()]));

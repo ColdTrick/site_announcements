@@ -25,8 +25,8 @@ if (isset($_COOKIE['site_announcements'])) {
 	$guids = string_to_tag_array($_COOKIE['site_announcements']);
 }
 
-$guids[] = $entity->getGUID();
+$guids[] = $entity->guid;
 $expire = time() + (30 * 24 * 60 * 60); // in 30 days
-setcookie(site_announcements, implode(",", $guids), $expire, "/");
+setcookie('site_announcements', implode(",", $guids), $expire, "/");
 
 return elgg_ok_response();

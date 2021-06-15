@@ -33,12 +33,10 @@ $content = elgg_list_entities([
 			$wheres[] = $qb->compare("{$main_alias}.guid", 'in', $admins->getSQL());
 			
 			// editors
-			$private_setting_name = _elgg_services()->plugins->namespacePrivateSetting('user_setting', 'editor', 'site_announcements');
-			
 			$editors = $qb->subquery('private_settings', 'eps');
 			$editor_entities = $editors->joinEntitiesTable('eps', 'entity_guid');
 			$editors->select('eps.entity_guid')
-				->where($qb->compare('name', '=', $private_setting_name, ELGG_VALUE_STRING))
+				->where($qb->compare('name', '=', 'plugin:user_setting:site_announcements:editor', ELGG_VALUE_STRING))
 				->andWhere($qb->compare("{$editor_entities}.type", '=', 'user', ELGG_VALUE_STRING));
 			
 			$wheres[] = $qb->compare("{$main_alias}.guid", 'in', $editors->getSQL());

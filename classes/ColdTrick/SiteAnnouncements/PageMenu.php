@@ -21,10 +21,10 @@ class PageMenu {
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'site_announcements',
 			'text' => elgg_echo('site_announcements'),
-			'href' => 'announcements/all',
+			'href' => elgg_generate_url('collection:object:site_announcement:all'),
 			'is_trusted' => true,
 			'section' => 'administer',
-			'parent_name' => 'administer_utilities'
+			'parent_name' => 'administer_utilities',
 		]);
 		
 		return $returnvalue;

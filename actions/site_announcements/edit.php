@@ -62,6 +62,6 @@ if (!$entity->save()) {
 	return elgg_error_response(elgg_echo('site_announcement:action:edit:error:save'));
 }
 
-elgg_clear_sticky_form("site_announcement_edit");
+elgg_clear_sticky_form('site_announcement_edit');
 
 return elgg_ok_response('', elgg_echo('site_announcement:action:edit:success'), elgg_generate_url('collection:object:site_announcement:all'));

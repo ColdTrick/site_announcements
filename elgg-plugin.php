@@ -1,10 +1,11 @@
 <?php
 
-use ColdTrick\SiteAnnouncements\Bootstrap;
 use ColdTrick\SiteAnnouncements\Gatekeeper;
 
 return [
-	'bootstrap' => Bootstrap::class,
+	'plugin' => [
+		'version' => '6.2.1',
+	],
 	'entities' => [
 		[
 			'type' => 'object',
@@ -64,5 +65,55 @@ return [
 	'actions' => [
 		'site_announcements/mark' => ['access' => 'public'],
 		'site_announcements/toggle_editor' => ['access' => 'admin'],
+	],
+	
+	'hooks' => [
+		'access:collections:write' => [
+			'user' => [
+				'\ColdTrick\SiteAnnouncements\Access::userWriteCollections' => [],
+			],
+		],
+		'container_permissions_check' => [
+			'object' => [
+				'\ColdTrick\SiteAnnouncements\Access::containerPermissionsCheck' => [],
+			],
+		],
+		'cron' => [
+			'daily' => [
+				'\ColdTrick\SiteAnnouncements\Cron::cleanupExpiredAnnouncements' => [],
+			],
+		],
+		'register' => [
+			'menu:filter:site_announcements' => [
+				'\ColdTrick\SiteAnnouncements\FilterMenu::register' => [],
+			],
+			'menu:footer' => [
+				'\ColdTrick\SiteAnnouncements\FooterMenu::register' => [],
+			],
+			'menu:page' => [
+				'\ColdTrick\SiteAnnouncements\PageMenu::register' => [],
+			],
+			'menu:user_hover' => [
+				'\ColdTrick\SiteAnnouncements\UserHoverMenu::register' => [],
+			],
+		],
+		'permissions_check' => [
+			'object' => [
+				'\ColdTrick\SiteAnnouncements\Access::permissionsCheck' => [],
+			],
+		],
+		'permissions_check:comment' => [
+			'object' => [
+				'\ColdTrick\SiteAnnouncements\Access::commentPermissionsCheck' => [],
+			],
+		],
+	],
+	'view_extensions' => [
+		'elgg.css' => [
+			'site_announcements/site.css' => [],
+		],
+		'page/elements/body' => [
+			'site_announcements/site' => ['priority' => 400],
+		],
 	],
 ];

@@ -16,7 +16,7 @@ class FooterMenu {
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'site_announcements',
 			'text' => elgg_echo('site_announcements'),
-			'href' => 'announcements/all',
+			'href' => elgg_generate_url('collection:object:site_announcement:all'),
 			'is_trusted' => true,
 			'icon' => 'bullhorn',
 		]);
