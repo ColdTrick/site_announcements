@@ -5,14 +5,11 @@
 
 // breadcrumb
 elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
-elgg_push_breadcrumb(elgg_echo('site_announcements:scheduled'));
 
 // add button
 elgg_register_title_button('announcements', 'add', 'object', \SiteAnnouncement::SUBTYPE);
 
 // build page elements
-$title = elgg_echo('site_announcements:scheduled:title');
-
 $content = elgg_list_entities([
 	'type' => 'object',
 	'subtype' => \SiteAnnouncement::SUBTYPE,
@@ -31,13 +28,10 @@ $content = elgg_list_entities([
 	'no_results' => elgg_echo('site_announcements:scheduled:none'),
 ]);
 
-// build page
-$page_data = elgg_view_layout('default', [
-	'title' => $title,
+// draw page
+echo elgg_view_page(elgg_echo('site_announcements:scheduled:title'), [
 	'content' => $content,
 	'filter_id' => 'site_announcements',
+	'filter_value' => 'scheduled',
 	'sidebar' => false,
 ]);
-
-// draw page
-echo elgg_view_page($title, $page_data);

@@ -11,20 +11,12 @@ $entity = get_entity($guid);
 
 // breadcrumb
 elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
-elgg_push_breadcrumb(elgg_echo('edit'));
 
-// build page elements
-$title = elgg_echo('site_announcements:edit:title');
-
-$content = elgg_view_form('site_announcements/edit', [], ['entity' => $entity]);
-
-// build page
-$page_data = elgg_view_layout('default', [
-	'title' => $title,
-	'content' => $content,
+// draw page
+echo elgg_view_page(elgg_echo('site_announcements:edit:title'), [
+	'content' => elgg_view_form('site_announcements/edit', [], [
+		'entity' => $entity,
+	]),
 	'filter_id' => 'site_announcements/edit',
 	'sidebar' => false,
 ]);
-
-// draw page
-echo elgg_view_page($title, $page_data);
