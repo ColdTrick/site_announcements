@@ -4,7 +4,7 @@ use ColdTrick\SiteAnnouncements\Gatekeeper;
 
 return [
 	'plugin' => [
-		'version' => '6.2.1',
+		'version' => '7.0',
 	],
 	'entities' => [
 		[
