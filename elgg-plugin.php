@@ -14,7 +14,7 @@ return [
 		],
 	],
 	'routes' => [
-		'action:site_announcements:edit' => [
+		'action:site_announcements/edit' => [
 			'path' => '/action/site_announcements/edit',
 			'file' => __DIR__ . '/actions/site_announcements/edit.php',
 			'middleware' => [
