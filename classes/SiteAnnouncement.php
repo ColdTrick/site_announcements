@@ -38,14 +38,6 @@ class SiteAnnouncement extends \ElggObject {
 	}
 	
 	/**
-	 * {@inheritDoc}
-	 * @see \ElggObject::canComment()
-	 */
-	public function canComment($user_guid = 0, $default = null) {
-		return false;
-	}
-	
-	/**
 	 * Returns the iconname for this announcement
 	 *
 	 * @return string

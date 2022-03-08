@@ -11,6 +11,9 @@ return [
 			'type' => 'object',
 			'subtype' => 'site_announcement',
 			'class' => \SiteAnnouncement::class,
+			'capabilities' => [
+				'commentable' => false,
+			],
 		],
 	],
 	'routes' => [
