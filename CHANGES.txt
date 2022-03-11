@@ -1,6 +1,11 @@
 Version history
 ===============
 
+8.0 (2022-03-11):
+
+- changed: increased minimal Elgg version to 4.1
+- fixed: use capabilities for commentable
+
 7.0.1 (2022-02-16):
 
 - several small chores/fixes
