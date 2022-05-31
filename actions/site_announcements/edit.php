@@ -37,8 +37,8 @@ if ($realenddate <= $realstartdate) {
 
 if (!empty($guid)) {
 	$entity = get_entity($guid);
-	if (!$entity instanceof \SiteAnnouncement) {
-		return elgg_error_response(elgg_echo('noaccess'));
+	if (!$entity instanceof \SiteAnnouncement || !$entity->canEdit()) {
+		return elgg_error_response(elgg_echo('actionunauthorized'));
 	}
 } else {
 	$entity = new \SiteAnnouncement();
