@@ -17,10 +17,10 @@ if (Gatekeeper::isEditor()) {
 $content = elgg_list_entities([
 	'type' => 'object',
 	'subtype' => \SiteAnnouncement::SUBTYPE,
-	'order_by_metadata' => [
-		'name' => 'enddate',
-		'as' => 'integer',
+	'sort_by' => [
+		'property' => 'enddate',
 		'direction' => 'DESC',
+		'signed' => true,
 	],
 	'metadata_name_value_pairs' => [
 		[

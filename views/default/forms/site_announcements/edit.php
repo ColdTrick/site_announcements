@@ -31,7 +31,7 @@ if (!empty($entity)) {
 	$enddate = time() + (7 * 24 * 60 * 60);
 	
 	$announcement_type = elgg_get_sticky_value('site_announcement_edit', 'announcement_type');
-	$access_id = elgg_get_sticky_value('site_announcement_edit', 'access_id', get_default_access());
+	$access_id = elgg_get_sticky_value('site_announcement_edit', 'access_id', elgg_get_default_access());
 }
 
 $startdate = Values::normalizeTime($startdate);

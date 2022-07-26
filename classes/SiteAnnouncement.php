@@ -30,11 +30,11 @@ class SiteAnnouncement extends \ElggObject {
 	 */
 	public function markAsRead() {
 		$user = elgg_get_logged_in_user_entity();
-		if (!$user) {
+		if (!$user instanceof \ElggUser) {
 			return false;
 		}
 		
-		return add_entity_relationship($user->guid, $this::READ_RELATIONSHIP, $this->guid);
+		return $user->addRelationship($this->guid, self::READ_RELATIONSHIP);
 	}
 	
 	/**

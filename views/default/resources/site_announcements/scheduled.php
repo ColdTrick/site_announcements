@@ -13,10 +13,10 @@ elgg_register_title_button('announcements', 'add', 'object', \SiteAnnouncement::
 $content = elgg_list_entities([
 	'type' => 'object',
 	'subtype' => \SiteAnnouncement::SUBTYPE,
-	'order_by_metadata' => [
-		'name' => 'startdate',
-		'as' => 'integer',
-		'direction' => 'ASC'
+	'sort_by' => [
+		'property' => 'startdate',
+		'direction' => 'ASC',
+		'signed' => true,
 	],
 	'metadata_name_value_pairs' => [
 		[

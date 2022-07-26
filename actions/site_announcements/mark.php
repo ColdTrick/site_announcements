@@ -22,7 +22,7 @@ if (elgg_is_logged_in()) {
 
 $guids = [];
 if (isset($_COOKIE['site_announcements'])) {
-	$guids = string_to_tag_array($_COOKIE['site_announcements']);
+	$guids = elgg_string_to_array((string) $_COOKIE['site_announcements']);
 }
 
 $guids[] = $entity->guid;

@@ -22,10 +22,10 @@ $options = [
 			'operand' => '>',
 		],
 	],
-	'order_by_metadata' => [
-		'name' => 'startdate',
-		'as' => 'integer',
+	'sort_by' => [
+		'property' => 'startdate',
 		'direction' => 'ASC',
+		'signed' => true,
 	],
 	'full_view' => true,
 	'pagination' => false,
@@ -45,7 +45,7 @@ if (elgg_is_logged_in()) {
 	};
 } else {
 	if (isset($_COOKIE['site_announcements'])) {
-		$guids = string_to_tag_array($_COOKIE['site_announcements']);
+		$guids = elgg_string_to_array((string) $_COOKIE['site_announcements']);
 		foreach ($guids as $index => $guid) {
 			if (!is_numeric($guid)) {
 				unset($guids[$index]);
