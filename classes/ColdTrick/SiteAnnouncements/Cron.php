@@ -2,16 +2,19 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
+/**
+ * Cron listener
+ */
 class Cron {
 	
 	/**
 	 * Cleanup expired announcements
 	 *
-	 * @param \Elgg\Hook $hook 'cron', 'daily'
+	 * @param \Elgg\Event $event 'cron', 'daily'
 	 *
 	 * @return void
 	 */
-	public static function cleanupExpiredAnnouncements(\Elgg\Hook $hook) {
+	public static function cleanupExpiredAnnouncements(\Elgg\Event $event): void {
 		
 		$archive_cleanup = (int) elgg_get_plugin_setting('archive_cleanup', 'site_announcements');
 		if ($archive_cleanup < 1) {
@@ -21,7 +24,7 @@ class Cron {
 		echo 'Starting SiteAnnouncements cleanup' . PHP_EOL;
 		elgg_log('Starting SiteAnnouncements cleanup', 'NOTICE');
 		
-		$time = (int) $hook->getParam('time', time());
+		$time = (int) $event->getParam('time', time());
 		
 		$options = [
 			'type' => 'object',
@@ -31,12 +34,23 @@ class Cron {
 				'name' => 'enddate',
 				'value' => $time - ($archive_cleanup * 24 * 60 * 60),
 				'operand' => '<',
+				'as' => 'integer',
 			],
+			'batch' => true,
+			'batch_inc_offset' => false,
 		];
 		
 		elgg_call(ELGG_IGNORE_ACCESS, function() use ($options) {
 			// cleanup
-			$batch = new \ElggBatch('elgg_get_entities', $options, 'elgg_batch_delete_callback', 25, false);
+			/* @var $batch \ElggBatch */
+			$batch = elgg_get_entities($options);
+			
+			/* @var $entity \SiteAnnouncement */
+			foreach ($batch as $entity) {
+				if (!$entity->delete()) {
+					$batch->reportFailure();
+				}
+			}
 		});
 		
 		echo 'Done with SiteAnnouncements cleanup' . PHP_EOL;

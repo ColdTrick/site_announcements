@@ -28,7 +28,7 @@ class SiteAnnouncement extends \ElggObject {
 	 *
 	 * @return bool
 	 */
-	public function markAsRead() {
+	public function markAsRead(): bool {
 		$user = elgg_get_logged_in_user_entity();
 		if (!$user instanceof \ElggUser) {
 			return false;
@@ -38,7 +38,7 @@ class SiteAnnouncement extends \ElggObject {
 	}
 	
 	/**
-	 * Returns the iconname for this announcement
+	 * Returns the icon name for this announcement
 	 *
 	 * @return string
 	 */
@@ -46,13 +46,14 @@ class SiteAnnouncement extends \ElggObject {
 		
 		switch ($this->announcement_type) {
 			case 'attention':
+				return 'exclamation-triangle';
 			case 'info':
-				return $this->announcement_type;
+				return 'info';
 			case 'error':
 				return 'exclamation-circle';
 		}
 		
-		return 'hand-point-right';
+		return 'bullhorn';
 	}
 	
 	/**
@@ -60,7 +61,7 @@ class SiteAnnouncement extends \ElggObject {
 	 *
 	 * @return string
 	 */
-	public function getMessageTypeLabel() {
+	public function getMessageTypeLabel(): string {
 		$type = $this->announcement_type ?: 'general';
 		return elgg_echo("site_announcements:type:{$type}");
 	}

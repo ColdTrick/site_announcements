@@ -1,6 +1,7 @@
 <?php
 
 use ColdTrick\SiteAnnouncements\Gatekeeper;
+use Elgg\Blog\Forms\PrepareFields;
 
 return [
 	'plugin' => [
@@ -16,11 +17,16 @@ return [
 			],
 		],
 	],
+	'actions' => [
+		'site_announcements/mark' => ['access' => 'public'],
+		'site_announcements/toggle_editor' => ['access' => 'admin'],
+	],
 	'routes' => [
 		'action:site_announcements/edit' => [
 			'path' => '/action/site_announcements/edit',
 			'file' => __DIR__ . '/actions/site_announcements/edit.php',
 			'middleware' => [
+				\Elgg\Router\Middleware\ActionMiddleware::class,
 				Gatekeeper::class,
 			]
 		],
@@ -65,12 +71,7 @@ return [
 			'resource' => 'site_announcements/all',
 		],
 	],
-	'actions' => [
-		'site_announcements/mark' => ['access' => 'public'],
-		'site_announcements/toggle_editor' => ['access' => 'admin'],
-	],
-	
-	'hooks' => [
+	'events' => [
 		'access:collections:write' => [
 			'user' => [
 				'\ColdTrick\SiteAnnouncements\Access::userWriteCollections' => [],
@@ -86,18 +87,9 @@ return [
 				'\ColdTrick\SiteAnnouncements\Cron::cleanupExpiredAnnouncements' => [],
 			],
 		],
-		'register' => [
-			'menu:filter:site_announcements' => [
-				'\ColdTrick\SiteAnnouncements\FilterMenu::register' => [],
-			],
-			'menu:footer' => [
-				'\ColdTrick\SiteAnnouncements\FooterMenu::register' => [],
-			],
-			'menu:page' => [
-				'\ColdTrick\SiteAnnouncements\PageMenu::register' => [],
-			],
-			'menu:user_hover' => [
-				'\ColdTrick\SiteAnnouncements\UserHoverMenu::register' => [],
+		'form:prepare:fields' => [
+			'site_announcements/edit' => [
+				\ColdTrick\SiteAnnouncements\Forms\PrepareFields::class => [],
 			],
 		],
 		'permissions_check' => [
@@ -105,9 +97,19 @@ return [
 				'\ColdTrick\SiteAnnouncements\Access::permissionsCheck' => [],
 			],
 		],
-		'permissions_check:comment' => [
-			'object' => [
-				'\ColdTrick\SiteAnnouncements\Access::commentPermissionsCheck' => [],
+		
+		'register' => [
+			'menu:admin_header' => [
+				'\ColdTrick\SiteAnnouncements\Menus\AdminHeader::register' => [],
+			],
+			'menu:filter:site_announcements' => [
+				'\ColdTrick\SiteAnnouncements\Menus\Filter::register' => [],
+			],
+			'menu:footer' => [
+				'\ColdTrick\SiteAnnouncements\Menus\Footer::register' => [],
+			],
+			'menu:user_hover' => [
+				'\ColdTrick\SiteAnnouncements\Menus\UserHover::register' => [],
 			],
 		],
 	],

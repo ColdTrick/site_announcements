@@ -2,26 +2,29 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
+/**
+ * Extend access options
+ */
 class Access {
 	
 	/**
 	 * Change the access options for site announcements
 	 *
-	 * @param \Elgg\Hook $hook 'access:collections:write', 'user'
+	 * @param \Elgg\Event $event 'access:collections:write', 'user'
 	 *
-	 * @return array
+	 * @return null|array
 	 */
-	public static function userWriteCollections(\Elgg\Hook $hook) {
+	public static function userWriteCollections(\Elgg\Event $event): ?array {
 
-		$input_params = $hook->getParam('input_params');
+		$input_params = $event->getParam('input_params');
 		if (empty($input_params) || !is_array($input_params)) {
-			return;
+			return null;
 		}
 		
 		$type = elgg_extract('entity_type', $input_params);
 		$subtype = elgg_extract('entity_subtype', $input_params);
-		if (($type !== 'object') || ($subtype !== \SiteAnnouncement::SUBTYPE)) {
-			return;
+		if ($type !== 'object' || $subtype !== \SiteAnnouncement::SUBTYPE) {
+			return null;
 		}
 		
 		$allowed_values = [
@@ -29,7 +32,7 @@ class Access {
 			ACCESS_PUBLIC,
 		];
 		
-		$returnvalue = $hook->getValue();
+		$returnvalue = $event->getValue();
 		foreach ($returnvalue as $index => $value) {
 			if (!in_array($index, $allowed_values)) {
 				unset($returnvalue[$index]);
@@ -42,77 +45,60 @@ class Access {
 	/**
 	 * Check the container write permissions
 	 *
-	 * @param \Elgg\Hook $hook 'container_permissions_check', 'object'
+	 * @param \Elgg\Event $event 'container_permissions_check', 'object'
 	 *
-	 * @return bool
+	 * @return null|bool
 	 */
-	public static function containerPermissionsCheck(\Elgg\Hook $hook) {
-		if ($hook->getValue()) {
+	public static function containerPermissionsCheck(\Elgg\Event $event): ?bool {
+		if ($event->getValue()) {
 			// already allowed
-			return;
+			return null;
 		}
 		
-		$user = $hook->getUserParam();
+		$user = $event->getUserParam();
 		if (!$user instanceof \ElggUser) {
-			return;
+			return null;
 		}
 		
-		$subtype = $hook->getParam('subtype');
+		$subtype = $event->getParam('subtype');
 		if ($subtype !== \SiteAnnouncement::SUBTYPE) {
-			return;
+			return null;
 		}
 		
 		if (!Gatekeeper::isEditor($user)) {
-			return;
+			return null;
 		}
 		
 		return true;
 	}
 	
 	/**
-	 * Check the write permissions
+	 * Check write permissions
 	 *
-	 * @param \Elgg\Hook $hook 'permissions_check', 'object'
+	 * @param \Elgg\Event $event 'permissions_check', 'object'
 	 *
-	 * @return bool
+	 * @return null|bool
 	 */
-	public static function permissionsCheck(\Elgg\Hook $hook) {
-		
-		if ($hook->getValue()) {
+	public static function permissionsCheck(\Elgg\Event $event): ?bool {
+		if ($event->getValue()) {
 			// already allowed
-			return;
+			return null;
 		}
 		
-		$user = $hook->getUserParam();
+		$user = $event->getUserParam();
 		if (!$user instanceof \ElggUser) {
-			return;
+			return null;
 		}
 		
-		$entity = $hook->getEntityParam();
+		$entity = $event->getEntityParam();
 		if (!$entity instanceof \SiteAnnouncement) {
-			return;
+			return null;
 		}
 		
 		if (!Gatekeeper::isEditor($user)) {
-			return;
+			return null;
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Check the can comment
-	 *
-	 * @param \Elgg\Hook $hook 'permissions_check:comment', 'object'
-	 *
-	 * @return bool
-	 */
-	public static function commentPermissionsCheck(\Elgg\Hook $hook) {
-		$entity = $hook->getEntityParam();
-		if (!$entity instanceof \SiteAnnouncement) {
-			return;
-		}
-		
-		return false;
 	}
 }

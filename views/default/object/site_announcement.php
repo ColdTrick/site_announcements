@@ -11,16 +11,18 @@ if (!$entity instanceof \SiteAnnouncement) {
 }
 
 if (elgg_extract('full_view', $vars, false)) {
-	
 	$content = elgg_view('output/longtext', ['value' => $entity->description]);
 	
 	$announcement_type = $entity->announcement_type;
 	
 	$message_options = [
 		'icon' => $entity->getMessageTypeIconName(),
-		'class' => " site-announcement-" . $announcement_type
+		'class' => [
+			"site-announcement-{$announcement_type}",
+		],
 	];
 	
+	// error, success, warning, help, notice
 	switch ($announcement_type) {
 		case 'attention':
 			$message_type = 'warning';
@@ -36,14 +38,13 @@ if (elgg_extract('full_view', $vars, false)) {
 			$message_type = 'success';
 			break;
 	}
-	//error, success, warning, help, notice
 	
 	$mark = elgg_view('output/url', [
 		'icon' => 'delete',
 		'text' => false,
+		'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
 		'class' => 'site-announcements-mark',
 		'title' => elgg_echo('site_announcements:menu:entity:mark'),
-		'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
 	]);
 	$content = elgg_view_image_block('', $content, ['image_alt' => $mark]);
 	

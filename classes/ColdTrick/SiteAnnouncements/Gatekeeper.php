@@ -5,6 +5,9 @@ namespace ColdTrick\SiteAnnouncements;
 use Elgg\Request;
 use Elgg\Exceptions\Http\GatekeeperException;
 
+/**
+ * Site announcement editor gatekeeper
+ */
 class Gatekeeper {
 	
 	/**
@@ -30,7 +33,7 @@ class Gatekeeper {
 	 *
 	 * @return bool
 	 */
-	public static function isEditor(\ElggUser $user = null) {
+	public static function isEditor(\ElggUser $user = null): bool {
 		
 		if (!$user instanceof \ElggUser) {
 			$user = elgg_get_logged_in_user_entity();
@@ -46,6 +49,6 @@ class Gatekeeper {
 		}
 		
 		// check normal users
-		return !empty(elgg_get_plugin_user_setting('editor', $user->guid, 'site_announcements'));
+		return !empty($user->getPluginSetting('site_announcements', 'editor'));
 	}
 }

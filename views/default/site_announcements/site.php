@@ -31,7 +31,7 @@ $options = [
 	'pagination' => false,
 ];
 
-// exclude read announcments
+// exclude read announcements
 if (elgg_is_logged_in()) {
 	$user_guid = elgg_get_logged_in_user_guid();
 	
@@ -41,7 +41,7 @@ if (elgg_is_logged_in()) {
 			->where($qb->compare('rc.guid_one', '=', $user_guid, ELGG_VALUE_INTEGER))
 			->andWhere($qb->compare('rc.relationship', '=', \SiteAnnouncement::READ_RELATIONSHIP, ELGG_VALUE_STRING));
 
-		return $qb->compare("{$main_alias}.guid", "NOT IN", $subquery->getSQL());
+		return $qb->compare("{$main_alias}.guid", 'NOT IN', $subquery->getSQL());
 	};
 } else {
 	if (isset($_COOKIE['site_announcements'])) {

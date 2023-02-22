@@ -1,26 +1,34 @@
 <?php
 
-namespace ColdTrick\SiteAnnouncements;
+namespace ColdTrick\SiteAnnouncements\Menus;
 
-class FilterMenu {
+use ColdTrick\SiteAnnouncements\Gatekeeper;
+use Elgg\Menu\MenuItems;
+
+/**
+ * Add menu items to the filter menu
+ */
+class Filter {
 	
 	/**
 	 * Change the filter menu items for site announcements
 	 *
-	 * @param \Elgg\Hook $hook 'register', 'menu:filter:site_announcements'
+	 * @param \Elgg\Event $event 'register', 'menu:filter:site_announcements'
 	 *
-	 * @return \ElggMenuItem[]
+	 * @return null|MenuItems
 	 */
-	public static function register(\Elgg\Hook $hook) {
+	public static function register(\Elgg\Event $event): ?MenuItems {
 		
-		$returnvalue = $hook->getValue();
+		/* @var $returnvalue MenuItems */
+		$returnvalue = $event->getValue();
+		
 		$returnvalue[] = \ElggMenuItem::factory([
 			'name' => 'all',
 			'text' => elgg_echo('site_announcements:filter:active'),
 			'href' => elgg_generate_url('collection:object:site_announcement:all'),
 			'priority' => 100,
 			'is_trusted' => true,
-			'selected' => $hook->getParam('filter_value') === 'all',
+			'selected' => $event->getParam('filter_value') === 'all',
 		]);
 		
 		$returnvalue[] = \ElggMenuItem::factory([

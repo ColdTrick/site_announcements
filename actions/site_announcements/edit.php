@@ -5,8 +5,6 @@
 
 use Elgg\Values;
 
-elgg_make_sticky_form('site_announcement_edit');
-
 $guid = (int) get_input('guid');
 $description = get_input('description');
 $access_id = (int) get_input('access_id');
@@ -61,7 +59,5 @@ $entity->announcement_type = $announcement_type;
 if (!$entity->save()) {
 	return elgg_error_response(elgg_echo('site_announcement:action:edit:error:save'));
 }
-
-elgg_clear_sticky_form('site_announcement_edit');
 
 return elgg_ok_response('', elgg_echo('site_announcement:action:edit:success'), elgg_generate_url('collection:object:site_announcement:all'));

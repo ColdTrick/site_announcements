@@ -26,7 +26,10 @@ if (isset($_COOKIE['site_announcements'])) {
 }
 
 $guids[] = $entity->guid;
-$expire = time() + (30 * 24 * 60 * 60); // in 30 days
-setcookie('site_announcements', implode(",", $guids), $expire, "/");
+
+$cookie = new \ElggCookie('site_announcements');
+$cookie->value = implode(',', $guids);
+$cookie->setExpiresTime('+30 days');
+elgg_set_cookie($cookie);
 
 return elgg_ok_response();
