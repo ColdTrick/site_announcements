@@ -14,7 +14,7 @@ $vars['options'] = [
 			'name' => 'startdate',
 			'value' => time(),
 			'operand' => '>',
-			'as' => 'integer',
+			'type' => ELGG_VALUE_INTEGER,
 		],
 	],
 ];

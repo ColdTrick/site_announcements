@@ -19,13 +19,13 @@ $defaults = [
 			'name' => 'startdate',
 			'value' => time(),
 			'operand' => '<=',
-			'as' => 'integer',
+			'type' => ELGG_VALUE_INTEGER,
 		],
 		[
 			'name' => 'enddate',
 			'value' => time(),
 			'operand' => '>',
-			'as' => 'integer',
+			'type' => ELGG_VALUE_INTEGER,
 		]
 	],
 	'no_results' => elgg_echo('site_announcements:all:none'),

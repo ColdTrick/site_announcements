@@ -34,7 +34,7 @@ class Cron {
 				'name' => 'enddate',
 				'value' => $time - ($archive_cleanup * 24 * 60 * 60),
 				'operand' => '<',
-				'as' => 'integer',
+				'type' => ELGG_VALUE_INTEGER,
 			],
 			'batch' => true,
 			'batch_inc_offset' => false,
