@@ -18,18 +18,15 @@ return [
 		],
 	],
 	'actions' => [
+		'site_announcements/edit' => [
+			'middleware' => [
+				Gatekeeper::class,
+			],
+		],
 		'site_announcements/mark' => ['access' => 'public'],
 		'site_announcements/toggle_editor' => ['access' => 'admin'],
 	],
 	'routes' => [
-		'action:site_announcements/edit' => [
-			'path' => '/action/site_announcements/edit',
-			'file' => __DIR__ . '/actions/site_announcements/edit.php',
-			'middleware' => [
-				\Elgg\Router\Middleware\ActionMiddleware::class,
-				Gatekeeper::class,
-			]
-		],
 		'add:object:site_announcement' => [
 			'path' => '/announcements/add/{guid?}',
 			'resource' => 'site_announcements/add',
