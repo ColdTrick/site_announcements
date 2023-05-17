@@ -1,4 +1,8 @@
 <?php
+/**
+ * This file was created by Translation Editor v11.1
+ * On 2023-05-17 15:14
+ */
 
 return array (
   'item:object:site_announcement' => 'Annonce du réseau',

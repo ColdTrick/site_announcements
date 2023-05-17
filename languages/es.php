@@ -1,7 +1,7 @@
 <?php
 /**
- * This file was created by Translation Editor v6.0
- * On 2017-10-07 18:05
+ * This file was created by Translation Editor v11.1
+ * On 2023-05-17 15:14
  */
 
 return array (
@@ -9,7 +9,6 @@ return array (
   'site_announcements:archive' => 'Archivo',
   'site_announcements:scheduled' => 'Programado',
   'site_announcements:editors' => 'Anunciantes',
-  'announcements:add' => 'Añadir anuncio',
   'site_announcements:all:title' => 'Activar anuncios',
   'site_announcements:archive:title' => 'Archivo de anuncios',
   'site_announcements:add:title' => 'Añadir anuncio',
