@@ -94,7 +94,6 @@ return [
 				'\ColdTrick\SiteAnnouncements\Access::permissionsCheck' => [],
 			],
 		],
-		
 		'register' => [
 			'menu:admin_header' => [
 				'\ColdTrick\SiteAnnouncements\Menus\AdminHeader::register' => [],
@@ -107,6 +106,11 @@ return [
 			],
 			'menu:user_hover' => [
 				'\ColdTrick\SiteAnnouncements\Menus\UserHover::register' => [],
+			],
+		],
+		'seeds' => [
+			'database' => [
+				'\ColdTrick\SiteAnnouncements\Seeder::register' => [],
 			],
 		],
 	],
