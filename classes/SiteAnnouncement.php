@@ -3,9 +3,9 @@
 /**
  * SiteAnnouncement class
  *
- * @property int    startdate         UNIX timestamp of the start of the message
- * @property int    enddate           UNIX timestamp of the end of the message
- * @property string announcement_type type of the message
+ * @property int    $startdate         UNIX timestamp of the start of the message
+ * @property int    $enddate           UNIX timestamp of the end of the message
+ * @property string $announcement_type type of the message
  */
 class SiteAnnouncement extends \ElggObject {
 
