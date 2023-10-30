@@ -42,9 +42,9 @@ if (elgg_extract('full_view', $vars, false)) {
 	$mark = elgg_view('output/url', [
 		'icon' => 'delete',
 		'text' => false,
+		'title' => elgg_echo('site_announcements:menu:entity:mark'),
 		'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
 		'class' => 'site-announcements-mark',
-		'title' => elgg_echo('site_announcements:menu:entity:mark'),
 	]);
 	$content = elgg_view_image_block('', $content, ['image_alt' => $mark]);
 	
@@ -78,6 +78,7 @@ if (elgg_extract('full_view', $vars, false)) {
 		'access' => false,
 		'byline' => false,
 		'time' => false,
+		'title' => false,
 		'imprint' => $imprint,
 	];
 	$params = $params + $vars;

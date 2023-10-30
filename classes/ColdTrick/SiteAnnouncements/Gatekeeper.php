@@ -2,13 +2,15 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
-use Elgg\Request;
+use Elgg\Exceptions\HttpException;
 use Elgg\Exceptions\Http\GatekeeperException;
+use Elgg\Request;
+use Elgg\Router\Middleware\Gatekeeper as CoreGatekeeper;
 
 /**
  * Site announcement editor gatekeeper
  */
-class Gatekeeper {
+class Gatekeeper extends CoreGatekeeper {
 	
 	/**
 	 * Only site announcement editors can access this part
@@ -17,9 +19,10 @@ class Gatekeeper {
 	 *
 	 * @return void
 	 * @throws GatekeeperException
+	 * @throws HttpException
 	 */
-	public function __invoke(Request $request) {
-		$request->elgg()->gatekeeper->assertAuthenticatedUser();
+	public function __invoke(Request $request): void {
+		parent::__invoke($request);
 		
 		if (!self::isEditor()) {
 			throw new GatekeeperException(elgg_echo('limited_access'));
@@ -34,12 +37,11 @@ class Gatekeeper {
 	 * @return bool
 	 */
 	public static function isEditor(\ElggUser $user = null): bool {
-		
 		if (!$user instanceof \ElggUser) {
 			$user = elgg_get_logged_in_user_entity();
 		}
 		
-		if (empty($user)) {
+		if (!$user instanceof \ElggUser) {
 			return false;
 		}
 		

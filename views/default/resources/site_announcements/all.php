@@ -6,7 +6,7 @@
 use ColdTrick\SiteAnnouncements\Gatekeeper;
 
 // breadcrumb
-elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
+elgg_push_collection_breadcrumbs('object', \SiteAnnouncement::SUBTYPE);
 
 // add button
 if (Gatekeeper::isEditor()) {

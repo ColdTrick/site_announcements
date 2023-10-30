@@ -4,7 +4,7 @@
  */
 
 // breadcrumb
-elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
+elgg_push_collection_breadcrumbs('object', \SiteAnnouncement::SUBTYPE);
 
 // add button
 elgg_register_title_button('add', 'object', \SiteAnnouncement::SUBTYPE);

@@ -21,9 +21,6 @@ class Cron {
 			return;
 		}
 		
-		echo 'Starting SiteAnnouncements cleanup' . PHP_EOL;
-		elgg_log('Starting SiteAnnouncements cleanup', 'NOTICE');
-		
 		$time = (int) $event->getParam('time', time());
 		
 		$options = [
@@ -52,8 +49,5 @@ class Cron {
 				}
 			}
 		});
-		
-		echo 'Done with SiteAnnouncements cleanup' . PHP_EOL;
-		elgg_log('Done with SiteAnnouncements cleanup', 'NOTICE');
 	}
 }

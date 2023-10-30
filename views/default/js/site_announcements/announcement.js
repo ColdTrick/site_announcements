@@ -1,9 +1,8 @@
 define(['jquery', 'elgg/Ajax'], function($, Ajax) {
 	
-	var mark_as_read = function(event) {
+	function mark_as_read(event) {
 		event.preventDefault();
 		
-		var guid = $(this).attr('rel');
 		var ajax = new Ajax(false);
 		
 		$message = $(this).closest('.elgg-message');
@@ -14,7 +13,7 @@ define(['jquery', 'elgg/Ajax'], function($, Ajax) {
 				$message.remove();
 			}
 		});
-	};
+	}
 	
 	$(document).on('click', '.site-announcements-mark', mark_as_read);
 });

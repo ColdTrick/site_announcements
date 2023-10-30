@@ -10,7 +10,7 @@ elgg_entity_gatekeeper($guid, 'object', \SiteAnnouncement::SUBTYPE);
 $entity = get_entity($guid);
 
 // breadcrumb
-elgg_push_collection_breadcrumbs('object', SiteAnnouncement::SUBTYPE);
+elgg_push_collection_breadcrumbs('object', \SiteAnnouncement::SUBTYPE);
 
 // draw page
 echo elgg_view_page(elgg_echo('site_announcements:edit:title'), [
