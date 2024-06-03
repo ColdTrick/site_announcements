@@ -25,7 +25,6 @@ class Footer {
 			'icon' => 'bullhorn',
 			'text' => elgg_echo('site_announcements'),
 			'href' => elgg_generate_url('collection:object:site_announcement:all'),
-			'is_trusted' => true,
 		]);
 		
 		return $returnvalue;

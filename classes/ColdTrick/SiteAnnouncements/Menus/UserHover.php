@@ -18,7 +18,6 @@ class UserHover {
 	 * @return null|MenuItems
 	 */
 	public static function register(\Elgg\Event $event): ?MenuItems {
-		
 		if (!elgg_is_admin_logged_in()) {
 			return null;
 		}

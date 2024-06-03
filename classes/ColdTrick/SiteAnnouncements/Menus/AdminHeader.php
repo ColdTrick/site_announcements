@@ -28,7 +28,6 @@ class AdminHeader {
 			'name' => 'site_announcements',
 			'text' => elgg_echo('site_announcements'),
 			'href' => elgg_generate_url('collection:object:site_announcement:all'),
-			'is_trusted' => true,
 			'parent_name' => 'administer',
 		]);
 		

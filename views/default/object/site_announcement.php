@@ -20,6 +20,13 @@ if (elgg_extract('full_view', $vars, false)) {
 		'class' => [
 			"site-announcement-{$announcement_type}",
 		],
+		'link' => elgg_view('output/url', [
+			'icon' => 'delete',
+			'text' => false,
+			'title' => elgg_echo('site_announcements:menu:entity:mark'),
+			'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
+			'class' => 'site-announcements-mark',
+		]),
 	];
 	
 	// error, success, warning, help, notice
@@ -38,15 +45,6 @@ if (elgg_extract('full_view', $vars, false)) {
 			$message_type = 'success';
 			break;
 	}
-	
-	$mark = elgg_view('output/url', [
-		'icon' => 'delete',
-		'text' => false,
-		'title' => elgg_echo('site_announcements:menu:entity:mark'),
-		'href' => elgg_generate_action_url('site_announcements/mark', ['guid' => $entity->guid]),
-		'class' => 'site-announcements-mark',
-	]);
-	$content = elgg_view_image_block('', $content, ['image_alt' => $mark]);
 	
 	echo elgg_view_message($message_type, $content, $message_options);
 } else {

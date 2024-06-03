@@ -1,6 +1,6 @@
 <?php
 
-/* @var $plugin ElggPlugin */
+/* @var $plugin \ElggPlugin */
 $plugin = elgg_extract('entity', $vars);
 
 echo elgg_view_field([
@@ -10,5 +10,4 @@ echo elgg_view_field([
 	'name' => 'params[archive_cleanup]',
 	'value' => $plugin->archive_cleanup,
 	'min' => 0,
-	'max' => 9999,
 ]);

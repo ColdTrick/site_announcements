@@ -32,7 +32,7 @@ class Gatekeeper extends CoreGatekeeper {
 	/**
 	 * Check if a user is an editor
 	 *
-	 * @param \ElggUser $user (optional) the user to check, defaults to loggedin user
+	 * @param null|\ElggUser $user (optional) the user to check, defaults to logged-in user
 	 *
 	 * @return bool
 	 */

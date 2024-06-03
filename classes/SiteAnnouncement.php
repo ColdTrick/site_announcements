@@ -42,8 +42,7 @@ class SiteAnnouncement extends \ElggObject {
 	 *
 	 * @return string
 	 */
-	public function getMessageTypeIconName() {
-		
+	public function getMessageTypeIconName(): string {
 		switch ($this->announcement_type) {
 			case 'attention':
 				return 'exclamation-triangle';

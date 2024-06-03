@@ -3,8 +3,6 @@
  * List all announcement editors
  */
 
-use Elgg\Database\QueryBuilder;
-
 // breadcrumb
 elgg_push_collection_breadcrumbs('object', \SiteAnnouncement::SUBTYPE);
 

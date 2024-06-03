@@ -48,6 +48,7 @@ class Seeder extends Seed {
 			
 			// undo some seeding stuff
 			unset($entity->title);
+			unset($entity->tags);
 			
 			$this->advance();
 		}

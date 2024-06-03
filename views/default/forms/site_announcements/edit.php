@@ -20,53 +20,57 @@ echo elgg_view_field([
 	'value' => elgg_extract('description', $vars),
 ]);
 
-echo '<div>';
-echo '<label for="startdate">' . elgg_echo('site_announcements:edit:startdate') . '</label>';
-echo elgg_view('input/date', [
-	'name' => 'startdate',
-	'value' => elgg_extract('startdate', $vars),
-	'timestamp' => true,
-	'class' => 'mhs elgg-col-1of5',
+echo elgg_view_field([
+	'#type' => 'fieldset',
+	'#label' => elgg_echo('site_announcements:edit:startdate'),
+	'align' => 'horizontal',
+	'fields' => [
+		[
+			'#type' => 'date',
+			'name' => 'startdate',
+			'value' => elgg_extract('startdate', $vars),
+			'timestamp' => true,
+		],
+		[
+			'#type' => 'select',
+			'name' => 'starthour',
+			'value' => elgg_extract('starthour', $vars),
+			'options' => $hour_options,
+		],
+		[
+			'#type' => 'select',
+			'name' => 'startmins',
+			'value' => elgg_extract('startmins', $vars),
+			'options' => $mins_options,
+		],
+	],
 ]);
-echo '@';
-echo elgg_view('input/select', [
-	'name' => 'starthour',
-	'value' => elgg_extract('starthour', $vars),
-	'options' => $hour_options,
-	'class' => 'mhs',
-]);
-echo ':';
-echo elgg_view('input/select', [
-	'name' => 'startmins',
-	'value' => elgg_extract('startmins', $vars),
-	'options' => $mins_options,
-	'class' => 'mls',
-]);
-echo '</div>';
 
-echo '<div>';
-echo '<label for="enddate">' . elgg_echo('site_announcements:edit:enddate') . '</label>';
-echo elgg_view('input/date', [
-	'name' => 'enddate',
-	'value' => elgg_extract('enddate', $vars),
-	'timestamp' => true,
-	'class' => 'mhs elgg-col-1of5',
+echo elgg_view_field([
+	'#type' => 'fieldset',
+	'#label' => elgg_echo('site_announcements:edit:enddate'),
+	'align' => 'horizontal',
+	'fields' => [
+		[
+			'#type' => 'date',
+			'name' => 'enddate',
+			'value' => elgg_extract('enddate', $vars),
+			'timestamp' => true,
+		],
+		[
+			'#type' => 'select',
+			'name' => 'endhour',
+			'value' => elgg_extract('endhour', $vars),
+			'options' => $hour_options,
+		],
+		[
+			'#type' => 'select',
+			'name' => 'endmins',
+			'value' => elgg_extract('endmins', $vars),
+			'options' => $mins_options,
+		],
+	],
 ]);
-echo '@';
-echo elgg_view('input/select', [
-	'name' => 'endhour',
-	'value' => elgg_extract('endhour', $vars),
-	'options' => $hour_options,
-	'class' => 'mhs',
-]);
-echo ':';
-echo elgg_view('input/select', [
-	'name' => 'endmins',
-	'value' => elgg_extract('endmins', $vars),
-	'options' => $mins_options,
-	'class' => 'mls',
-]);
-echo '</div>';
 
 echo elgg_view_field([
 	'#type' => 'select',

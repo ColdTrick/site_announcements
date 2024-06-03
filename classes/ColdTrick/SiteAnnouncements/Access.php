@@ -15,7 +15,6 @@ class Access {
 	 * @return null|array
 	 */
 	public static function userWriteCollections(\Elgg\Event $event): ?array {
-
 		$input_params = $event->getParam('input_params');
 		if (empty($input_params) || !is_array($input_params)) {
 			return null;

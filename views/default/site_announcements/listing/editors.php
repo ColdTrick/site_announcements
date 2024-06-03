@@ -5,6 +5,7 @@
  * @uses $vars['options'] additional options
  */
 
+use Elgg\Database\MetadataTable;
 use Elgg\Database\QueryBuilder;
 
 $defaults = [
@@ -14,17 +15,17 @@ $defaults = [
 			$wheres = [];
 			
 			// admins
-			$admins = $qb->subquery('metadata', 'amd');
-			$admins->select('amd.entity_guid')
-			   ->where($qb->compare('name', '=', 'admin', ELGG_VALUE_STRING))
-			   ->andWhere($qb->compare('value', '=', 'yes', ELGG_VALUE_STRING));
+			$admins = $qb->subquery(MetadataTable::TABLE_NAME, 'amd');
+			$admins->select("{$admins->getTableAlias()}.entity_guid")
+			   ->where($qb->compare("{$admins->getTableAlias()}.name", '=', 'admin', ELGG_VALUE_STRING))
+			   ->andWhere($qb->compare("{$admins->getTableAlias()}.value", '=', 'yes', ELGG_VALUE_STRING));
 			
 			$wheres[] = $qb->compare("{$main_alias}.guid", 'in', $admins->getSQL());
 			
 			// editors
-			$editors = $qb->subquery('metadata', 'eps');
-			$editors->select('eps.entity_guid')
-				->where($qb->compare('name', '=', 'plugin:user_setting:site_announcements:editor', ELGG_VALUE_STRING));
+			$editors = $qb->subquery(MetadataTable::TABLE_NAME, 'eps');
+			$editors->select("{$editors->getTableAlias()}.entity_guid")
+				->where($qb->compare("{$editors->getTableAlias()}.name", '=', 'plugin:user_setting:site_announcements:editor', ELGG_VALUE_STRING));
 			
 			$wheres[] = $qb->compare("{$main_alias}.guid", 'in', $editors->getSQL());
 			

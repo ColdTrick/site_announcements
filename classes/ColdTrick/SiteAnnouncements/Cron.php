@@ -2,6 +2,8 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
+use Elgg\I18n\DateTime;
+
 /**
  * Cron listener
  */
@@ -15,13 +17,13 @@ class Cron {
 	 * @return void
 	 */
 	public static function cleanupExpiredAnnouncements(\Elgg\Event $event): void {
-		
 		$archive_cleanup = (int) elgg_get_plugin_setting('archive_cleanup', 'site_announcements');
 		if ($archive_cleanup < 1) {
 			return;
 		}
 		
-		$time = (int) $event->getParam('time', time());
+		/* @var $dt DateTime */
+		$dt = $event->getParam('dt', new \DateTime());
 		
 		$options = [
 			'type' => 'object',
@@ -29,7 +31,7 @@ class Cron {
 			'limit' => false,
 			'metadata_name_value_pairs' => [
 				'name' => 'enddate',
-				'value' => $time - ($archive_cleanup * 24 * 60 * 60),
+				'value' => $dt->modify("-{$archive_cleanup} days")->getTimestamp(),
 				'operand' => '<',
 				'type' => ELGG_VALUE_INTEGER,
 			],
