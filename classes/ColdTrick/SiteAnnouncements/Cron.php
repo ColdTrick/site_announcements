@@ -23,7 +23,7 @@ class Cron {
 		}
 		
 		/* @var $dt DateTime */
-		$dt = $event->getParam('dt', new \DateTime());
+		$dt = clone $event->getParam('dt', new \DateTime());
 		
 		$options = [
 			'type' => 'object',
