@@ -1,6 +1,10 @@
 Version history
 ===============
 
+12.0.1 (2025-01-23):
+
+- fixed: don't modify cron time for everybody
+
 12.0 (2024-06-28):
 
 - changed: updated for Elgg 6
