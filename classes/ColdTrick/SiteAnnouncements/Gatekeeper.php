@@ -2,8 +2,8 @@
 
 namespace ColdTrick\SiteAnnouncements;
 
-use Elgg\Exceptions\HttpException;
 use Elgg\Exceptions\Http\GatekeeperException;
+use Elgg\Exceptions\HttpException;
 use Elgg\Request;
 use Elgg\Router\Middleware\Gatekeeper as CoreGatekeeper;
 
@@ -36,7 +36,7 @@ class Gatekeeper extends CoreGatekeeper {
 	 *
 	 * @return bool
 	 */
-	public static function isEditor(\ElggUser $user = null): bool {
+	public static function isEditor(?\ElggUser $user = null): bool {
 		if (!$user instanceof \ElggUser) {
 			$user = elgg_get_logged_in_user_entity();
 		}
