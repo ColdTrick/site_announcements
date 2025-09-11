@@ -9,8 +9,8 @@
  */
 class SiteAnnouncement extends \ElggObject {
 
-	const SUBTYPE = 'site_announcement';
-	const READ_RELATIONSHIP = 'site_announcement_read';
+	public const SUBTYPE = 'site_announcement';
+	public const READ_RELATIONSHIP = 'site_announcement_read';
 	
 	/**
 	 * {@inheritDoc}
