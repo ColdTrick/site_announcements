@@ -34,7 +34,7 @@ class UserHover {
 		
 		$is_editor = Gatekeeper::isEditor($entity);
 		
-		/* @var $returnvalue MenuItems */
+		/** @var MenuItems $returnvalue */
 		$returnvalue = $event->getValue();
 		
 		$returnvalue[] = \ElggMenuItem::factory([

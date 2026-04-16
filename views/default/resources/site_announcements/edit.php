@@ -7,7 +7,7 @@
 $guid = (int) elgg_extract('guid', $vars);
 elgg_entity_gatekeeper($guid, 'object', \SiteAnnouncement::SUBTYPE, true);
 
-/* @var $entity \SiteAnnouncement */
+/** @var \SiteAnnouncement $entity */
 $entity = get_entity($guid);
 
 // breadcrumb

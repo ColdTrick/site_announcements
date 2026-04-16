@@ -1,5 +1,6 @@
 <?php
 
+use ColdTrick\SiteAnnouncements\Controllers\ContentListing;
 use ColdTrick\SiteAnnouncements\Gatekeeper;
 use Elgg\Blog\Forms\PrepareFields;
 
@@ -43,29 +44,29 @@ return [
 		],
 		'collection:object:site_announcement:archive' => [
 			'path' => '/announcements/archive',
-			'resource' => 'site_announcements/archive',
+			'controller' => ContentListing::class,
 		],
 		'collection:object:site_announcement:scheduled' => [
 			'path' => '/announcements/scheduled',
-			'resource' => 'site_announcements/scheduled',
+			'controller' => ContentListing::class,
 			'middleware' => [
 				Gatekeeper::class,
 			],
 		],
 		'collection:object:site_announcement:editors' => [
 			'path' => '/announcements/editors',
-			'resource' => 'site_announcements/editors',
+			'controller' => ContentListing::class,
 			'middleware' => [
 				Gatekeeper::class,
 			],
 		],
 		'collection:object:site_announcement:all' => [
 			'path' => '/announcements/all',
-			'resource' => 'site_announcements/all',
+			'controller' => ContentListing::class,
 		],
 		'default:object:site_announcement' => [
 			'path' => '/announcements',
-			'resource' => 'site_announcements/all',
+			'controller' => ContentListing::class,
 		],
 	],
 	'events' => [

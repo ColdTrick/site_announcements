@@ -31,7 +31,7 @@ class Seeder extends Seed {
 			$enddate = $this->getTimestamp($startdate);
 			
 			try {
-				/* @var $entity \SiteAnnouncement */
+				/** @var \SiteAnnouncement $entity */
 				$entity = $this->createObject([
 					'subtype' => \SiteAnnouncement::SUBTYPE,
 					'owner_guid' => $site->guid,
@@ -58,7 +58,7 @@ class Seeder extends Seed {
 	 * {@inheritDoc}
 	 */
 	public function unseed() {
-		/* @var $entities \ElggBatch */
+		/** @var \ElggBatch $entities */
 		$entities = elgg_get_entities([
 			'type' => 'object',
 			'subtype' => \SiteAnnouncement::SUBTYPE,
@@ -68,7 +68,7 @@ class Seeder extends Seed {
 			'batch_inc_offset' => false,
 		]);
 		
-		/* @var $entity \SiteAnnouncement */
+		/** @var \SiteAnnouncement $entity */
 		foreach ($entities as $entity) {
 			if ($entity->delete()) {
 				$this->log("Deleted site announcement {$entity->guid}");

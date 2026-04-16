@@ -22,7 +22,7 @@ class Cron {
 			return;
 		}
 		
-		/* @var $dt DateTime */
+		/** @var DateTime $dt */
 		$dt = clone $event->getParam('dt', new \DateTime());
 		
 		$options = [
@@ -41,10 +41,10 @@ class Cron {
 		
 		elgg_call(ELGG_IGNORE_ACCESS, function() use ($options) {
 			// cleanup
-			/* @var $batch \ElggBatch */
+			/** @var \ElggBatch $batch */
 			$batch = elgg_get_entities($options);
 			
-			/* @var $entity \SiteAnnouncement */
+			/** @var \SiteAnnouncement $entity */
 			foreach ($batch as $entity) {
 				if (!$entity->delete()) {
 					$batch->reportFailure();

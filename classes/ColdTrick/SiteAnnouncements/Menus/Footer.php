@@ -17,7 +17,7 @@ class Footer {
 	 * @return null|MenuItems
 	 */
 	public static function register(\Elgg\Event $event): ?MenuItems {
-		/* @var $returnvalue MenuItems */
+		/** @var MenuItems $returnvalue */
 		$returnvalue = $event->getValue();
 		
 		$returnvalue[] = \ElggMenuItem::factory([
