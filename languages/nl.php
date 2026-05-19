@@ -1,10 +1,11 @@
 <?php
 /**
- * This file was created by Translation Editor v11.1
- * On 2023-05-17 15:13
+ * This file was created by Translation Editor v14.0.4
+ * On 2026-05-19 14:46
  */
 
 return array (
+  'list:object:site_announcement:no_results' => 'Geen aankondigingen gevonden',
   'site_announcements:type:error' => 'Fout',
   'entity:delete:object:site_announcement:success' => 'De aankondiging is verwijderd',
   'collection:object:site_announcement' => 'Aankondigingen',
