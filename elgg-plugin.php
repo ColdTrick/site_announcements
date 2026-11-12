@@ -6,7 +6,7 @@ use Elgg\Blog\Forms\PrepareFields;
 
 return [
 	'plugin' => [
-		'version' => '13.0',
+		'version' => '13.0.1',
 	],
 	'entities' => [
 		[
